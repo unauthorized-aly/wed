@@ -8,9 +8,11 @@ open /Users/alybarakat/Desktop/hana-aly-wedding/index.html
 
 | File | What it is |
 |---|---|
-| `index.html` | Chooser page — links to both variants |
-| `romantic.html` | **Variant A — Romantic Cairo.** Ivory paper, gold script, painted peonies, moorish ogee arch |
-| `luxe.html` | **Variant B — Cinematic Dark Luxe.** Night at the palace, gold dust, tall display capitals |
+| `index.html` | Chooser page — links to all four variants |
+| `romantic.html` | **A — Romantic Cairo, full.** Ivory paper, gold script, peonies, moorish ogee arch |
+| `romantic-short.html` | **A — Romantic, condensed.** Hero, invitation, countdown, 3-field RSVP |
+| `luxe.html` | **B — Cinematic Dark Luxe, full.** Night at the palace, gold dust, display capitals |
+| `luxe-short.html` | **B — Dark Luxe, condensed.** Hero, invitation, countdown, 3-field RSVP |
 | `assets/` | Photography and botanical plates |
 
 No build step, no dependencies, no framework. Each variant is one self-contained
@@ -57,8 +59,15 @@ move, or the preview image will break.
 
 ## Sections
 
-Hero + live countdown → invitation → countdown → venue & details → schedule →
-good-to-know → RSVP → footer.
+**Full variants:** hero + live countdown → invitation → countdown → venue &
+details → schedule → good-to-know → RSVP → footer.
+
+**Short variants:** hero → invitation → countdown → RSVP → footer. The RSVP is
+cut to three fields — name, optional phone, and Attending / Attending with +1.
+
+> Note: the short form has no way to decline. Everyone who opens it is choosing
+> between coming alone and coming with someone. If you want a "can't make it"
+> option, say so and I'll add a third choice.
 
 ## Still to confirm
 
@@ -67,6 +76,8 @@ These are placeholders — tell me the real values and I'll swap them in:
 - **Schedule times.** 5:00 arrive / 6:00 Katb El-Kitab / 7:00 zaffa / 8:00 dinner / 10:00 dancing.
 - **RSVP deadline** — currently 15 October 2026.
 - **Dress code** — "Garden formal" (A) / "Black tie optional" (B).
+- **The invitation artwork still reads "TWENTY TWENTY FOUR".** It is now the
+  WhatsApp preview image on every page, so it is the first thing guests see.
 - **Address** — 1 Al Saraya St, Al Manyal, Cairo.
 - **Child-free line** — remove it if that's not your plan.
 

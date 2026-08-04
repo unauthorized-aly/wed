@@ -4,34 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hana &amp; Aly — 21 November 2026</title>
-<meta name="description" content="Our wedding site, two ways. Mohamed Ali Palace, Manial, Cairo.">
+<meta name="description" content="Our wedding site, four ways. Mohamed Ali Palace, Manial, Cairo.">
 
 <!-- Link preview (WhatsApp / iMessage / Facebook / Slack).
-     If WhatsApp shows the link without a photo, change og:image and og:url to the
-     full absolute address, e.g. https://your-site.netlify.app/assets/share.jpg -->
+     If WhatsApp shows the link without a photo, change og:image to the
+     full absolute address, e.g. https://your-domain.com/assets/invitation-share.jpg -->
 <meta property="og:type"        content="website">
 <meta property="og:title"       content="Hana &amp; Aly — 21 November 2026">
-<meta property="og:description" content="Under the pergola of Mohamed Ali Palace, Manial, Cairo. Two directions — which one feels like us?">
-<meta property="og:image"       content="https://lucent-tanuki-a0cc91.netlify.app/assets/share.jpg">
-<meta property="og:image:width"  content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:description" content="Under the pergola of Mohamed Ali Palace, Manial, Cairo. Four directions — which one feels like us?">
+<meta property="og:image"       content="assets/invitation-share.jpg">
+<meta property="og:image:width"  content="666">
+<meta property="og:image:height" content="1000">
 <meta name="twitter:card"  content="summary_large_image">
 <meta name="twitter:title" content="Hana &amp; Aly — 21 November 2026">
-<meta name="twitter:image" content="https://lucent-tanuki-a0cc91.netlify.app/assets/share.jpg">
+<meta name="twitter:image" content="assets/invitation-share.jpg">
 <meta name="theme-color" content="#14100E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Italiana&family=Jost:wght@200;300;400&family=Sacramento&display=swap" rel="stylesheet">
+
 <style>
-*,*::before,*::after{box-sizing:border-box}
+*,*::before,*::after{ box-sizing:border-box; }
 body{
   margin:0; min-height:100svh; background:#14100E; color:#EFE7DA;
   font-family:'Cormorant Garamond',Georgia,serif; font-weight:300;
   font-variant-numeric:lining-nums;
-  display:grid; align-content:center; gap:clamp(2rem,6vw,4rem);
-  padding:clamp(2.5rem,7vw,5rem) clamp(1.25rem,5vw,3rem);
+  display:grid; align-content:start; gap:clamp(2rem,5vw,3.5rem);
+  padding:clamp(2.5rem,7vw,5rem) clamp(1.25rem,5vw,3rem) clamp(3rem,7vw,5rem);
   -webkit-font-smoothing:antialiased;
 }
+
+/* ---------- header ---------- */
 .head{ text-align:center; }
 .eyebrow{
   font-family:'Jost',system-ui,sans-serif; font-weight:300; font-size:.68rem;
@@ -43,18 +47,25 @@ body{
   background:linear-gradient(100deg,#8F6E32,#E6CE99 30%,#C6A159 55%,#E6CE99 75%,#8F6E32);
   -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
 }
-.head p{ margin:.9rem 0 0; color:rgba(239,231,218,.55); font-style:italic; }
+.head p{ margin:.9rem auto 0; color:rgba(239,231,218,.55); font-style:italic; max-width:38rem; }
 
-.grid{
-  display:grid; gap:clamp(1.25rem,3vw,2rem);
-  grid-template-columns:1fr;
-  width:min(100% ,64rem); margin-inline:auto;
+/* ---------- groups ---------- */
+.group{ width:min(100%,68rem); margin-inline:auto; display:grid; gap:clamp(1rem,2.5vw,1.5rem); }
+.group__label{
+  display:flex; align-items:center; gap:1rem;
+  font-family:'Jost',system-ui,sans-serif; font-weight:300; font-size:.62rem;
+  letter-spacing:.4em; text-transform:uppercase; color:rgba(239,231,218,.42);
+  margin:0 0 0 .4em;
 }
+.group__label::after{ content:""; height:1px; flex:1; background:linear-gradient(90deg,rgba(198,161,89,.45),transparent); }
+
+.grid{ display:grid; gap:clamp(1.25rem,3vw,2rem); grid-template-columns:1fr; }
 @media (min-width:52rem){ .grid{ grid-template-columns:1fr 1fr; } }
 
+/* ---------- cards ---------- */
 .pick{
-  position:relative; display:grid; align-content:end; gap:.5rem;
-  min-height:clamp(17rem,42vw,24rem);
+  position:relative; display:grid; align-content:end; gap:.45rem;
+  min-height:clamp(15rem,36vw,21rem);
   padding:clamp(1.4rem,3.5vw,2.2rem);
   text-decoration:none; color:inherit; overflow:hidden; isolation:isolate;
   border:1px solid rgba(198,161,89,.28);
@@ -69,55 +80,83 @@ body{
 .pick:hover img{ transform:scale(1.06); }
 .pick::after{ content:""; position:absolute; inset:0; z-index:-1; }
 
-.pick--a img{ filter:sepia(.4) saturate(.75) brightness(1.18); }
-.pick--a::after{ background:linear-gradient(to top,rgba(251,246,236,.97) 42%,rgba(251,246,236,.6) 68%,rgba(251,246,236,.22)); }
+/* light cards */
 .pick--a{ color:#2E3B3A; }
+.pick--a img{ filter:sepia(.34) saturate(.8) brightness(1.14); }
+.pick--a::after{ background:linear-gradient(to top,rgba(251,246,236,.97) 46%,rgba(251,246,236,.6) 70%,rgba(251,246,236,.2)); }
 .pick--a .label{ color:#B08A46; }
-.pick--a .name{ font-family:'Sacramento',cursive; font-size:clamp(2.2rem,5vw,3rem); line-height:1; }
+.pick--a .name{ font-family:'Sacramento',cursive; font-size:clamp(2rem,4.6vw,2.7rem); line-height:1; }
 .pick--a .desc{ color:#5C6B68; }
 
-.pick--b img{ filter:brightness(.6) saturate(.68) sepia(.2); }
-.pick--b::after{ background:linear-gradient(to top,rgba(10,12,12,.94) 24%,rgba(10,12,12,.45) 62%,rgba(10,12,12,.15)); }
+/* dark cards */
+.pick--b img{ filter:brightness(.55) saturate(.6) sepia(.28); }
+.pick--b::after{ background:linear-gradient(to top,rgba(10,12,12,.95) 46%,rgba(10,12,12,.45) 72%,rgba(10,12,12,.15)); }
 .pick--b .label{ color:#C6A159; }
-.pick--b .name{ font-family:'Italiana',serif; font-size:clamp(1.7rem,4vw,2.4rem); letter-spacing:.09em; text-transform:uppercase; line-height:1.1; }
+.pick--b .name{ font-family:'Italiana',serif; font-size:clamp(1.55rem,3.4vw,2.1rem); letter-spacing:.09em; text-transform:uppercase; line-height:1.1; }
 .pick--b .desc{ color:rgba(239,231,218,.6); }
 
 .label{
-  font-family:'Jost',system-ui,sans-serif; font-weight:300; font-size:.62rem;
-  letter-spacing:.36em; text-transform:uppercase; margin:0 0 0 .36em;
+  font-family:'Jost',system-ui,sans-serif; font-weight:300; font-size:.6rem;
+  letter-spacing:.34em; text-transform:uppercase; margin:0 0 0 .34em;
+  display:flex; align-items:center; gap:.7em;
 }
+.tag{ font-size:.9em; letter-spacing:.2em; padding:.25em .7em; border:1px solid currentColor; opacity:.75; }
 .name{ margin:0; font-weight:400; }
-.desc{ margin:.3rem 0 0; font-size:.95rem; line-height:1.6; max-width:26rem; }
+.desc{ margin:.35rem 0 0; font-size:.92rem; line-height:1.6; max-width:26rem; }
 
 .foot{ text-align:center; color:rgba(239,231,218,.35); font-size:.82rem; font-style:italic; }
-@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+@media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
 </style>
 </head>
 <body>
 
 <div class="head">
-  <p class="eyebrow">Two directions</p>
+  <p class="eyebrow">Four directions</p>
   <h1>Hana &amp; Aly</h1>
-  <p>Our wedding site, two ways. Same date, same palace &mdash; two very different feelings. Have a look at both and tell me which one feels like us.</p>
+  <p>Our wedding site, four ways. Same date, same palace &mdash; two different feelings, each in a full version and a short one. Have a look and tell me which feels like us.</p>
 </div>
 
-<div class="grid">
-  <a class="pick pick--a" href="romantic.html">
-    <img src="assets/garden-arcade.jpg" alt="">
-    <p class="label">Variant A</p>
-    <h2 class="name">Romantic Cairo</h2>
-    <p class="desc">Ivory paper, gold script, painted peonies and a moorish arch framing the palace garden. A living version of your invitation card.</p>
-  </a>
+<!-- ══════════ ROMANTIC ══════════ -->
+<div class="group">
+  <p class="group__label">Romantic Cairo</p>
+  <div class="grid">
+    <a class="pick pick--a" href="romantic.html">
+      <img src="assets/entrance.webp" alt="">
+      <p class="label">Variant A <span class="tag">Full</span></p>
+      <h2 class="name">Romantic Cairo</h2>
+      <p class="desc">Ivory paper, gold script, painted peonies and a moorish arch. The whole story &mdash; venue, schedule, details, RSVP.</p>
+    </a>
 
-  <a class="pick pick--b" href="luxe.html">
-    <img src="assets/arcade.jpg" alt="">
-    <p class="label">Variant B</p>
-    <h2 class="name">Cinematic Dark Luxe</h2>
-    <p class="desc">Night at the palace. Full-bleed carved stone, gold dust in the air, and the names cut in tall display capitals.</p>
-  </a>
+    <a class="pick pick--a" href="romantic-short.html">
+      <img src="assets/marble.webp" alt="">
+      <p class="label">Variant A <span class="tag">Short</span></p>
+      <h2 class="name">Romantic, condensed</h2>
+      <p class="desc">The same look, stripped to four screens: the names, the invitation, the countdown, and a three-field RSVP.</p>
+    </a>
+  </div>
 </div>
 
-<p class="foot">21 November 2026 &middot; Mohamed Ali Palace, Manial, Cairo</p>
+<!-- ══════════ DARK LUXE ══════════ -->
+<div class="group">
+  <p class="group__label">Cinematic Dark Luxe</p>
+  <div class="grid">
+    <a class="pick pick--b" href="luxe.html">
+      <img src="assets/arcade.jpg" alt="">
+      <p class="label">Variant B <span class="tag">Full</span></p>
+      <h2 class="name">Cinematic Dark Luxe</h2>
+      <p class="desc">Night at the palace. Carved stone, gold dust, names in tall display capitals. Venue, schedule, details, RSVP.</p>
+    </a>
+
+    <a class="pick pick--b" href="luxe-short.html">
+      <img src="assets/garden.webp" alt="">
+      <p class="label">Variant B <span class="tag">Short</span></p>
+      <h2 class="name">Dark Luxe, condensed</h2>
+      <p class="desc">The same mood, stripped to four screens: the names, the invitation, the countdown, and a three-field RSVP.</p>
+    </a>
+  </div>
+</div>
+
+<p class="foot">21 November 2026 &middot; Under the pergola, Mohamed Ali Palace, Manial, Cairo</p>
 
 </body>
 </html>
