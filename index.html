@@ -254,13 +254,18 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
 
 /* --- the reply bar: springs up on the first pixel of scroll, and stays --- */
 .reply{
-  position:fixed; z-index:50; inset:auto 0 0; background:linear-gradient(#FFF9EF,#F7EADA); color:#4A1E0C;
+  position:sticky; z-index:50; inset:auto 0 0; background:linear-gradient(#FFF9EF,#F7EADA); color:#4A1E0C;
   padding:.45rem var(--gutter) calc(.55rem + env(safe-area-inset-bottom));
   border-top:2px solid #B4803F; box-shadow:0 -16px 34px -12px rgba(40,12,2,.55);
   transform:translateY(118%); visibility:hidden;
   transition:transform .3s ease-in,visibility 0s linear .3s;
 }
 .reply::before{ content:""; position:absolute; inset:5px 0 auto; height:1px; background:rgba(180,128,63,.55); }
+.save{ text-align:center; background:#FBF3E6; color:#4A2A18; padding-block:clamp(3rem,8vw,4.5rem) 2.6rem; }
+.save .eyebrow{ color:#8C3214; }
+.save .section-title{ color:#8C3214; }
+.reply.done{ position:relative; }
+.reply.rest,.reply.done{ box-shadow:none; }
 .reply.on{ transform:none; visibility:visible; transition:transform .42s cubic-bezier(.2,1.3,.4,1); }
 .reply__orn{
   position:absolute; left:50%; top:-1.5rem; width:3rem; height:3rem; margin-left:-1.5rem; padding:.3rem; z-index:2; border-radius:50%;
@@ -286,7 +291,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
 }
 .seg input:checked + label{ background:#8C3214; border-color:#8C3214; color:#F6EADB; }
 .seg input:focus-visible + label{ outline:2px solid #8C3214; outline-offset:2px; }
-.reply .btn{ --btn:#8C3214; --btn-ink:#F6EADB; height:2.5rem; padding:0 1.5em; border-radius:2px; font-size:.7rem; letter-spacing:.16em; }
+.reply .btn{ --btn:#4E5230; --btn-ink:#F6EADB; height:2.5rem; padding:0 1.5em; border-radius:2px; font-size:.7rem; letter-spacing:.16em; }
 @media (min-width:44rem){
   .reply form{ grid-template-columns:1.2fr 1.8fr auto; align-items:center; }
   .seg{ grid-column:auto; order:1; }
@@ -299,13 +304,24 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
 }
 .reply input.hp{ position:absolute; inset-inline-start:-9999px; width:1px; height:1px; }
 .reply .btn:disabled{ opacity:.65; cursor:wait; transform:none; }
+.more{ grid-column:1/-1; order:3; display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding-inline:.2rem; font-size:1.02rem; color:#6E2A12; }
+.more__step{ display:flex; align-items:center; gap:.2rem; }
+.more__step button{ width:2.75rem; height:2.75rem; padding:0; border:1px solid #8C3214; border-radius:50%; background:none; color:#8C3214; font:400 1.35rem/1 var(--sans); cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+.more__step button:disabled{ opacity:.35; cursor:default; }
+.more__step button:focus-visible{ outline:2px solid #8C3214; outline-offset:2px; }
+.more__step output{ min-width:2.2rem; text-align:center; font-family:var(--sans); font-size:1.15rem; color:#4A1E0C; }
+.save__text{ max-width:30rem; margin:.8rem auto 0; font-size:1.12rem; line-height:1.45; }
+.decline{ position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+.decline-link{ grid-column:1/-1; order:3; justify-self:center; padding:.5rem .7rem; border:0; background:none; font:inherit; font-size:.92rem; color:#7A5340; text-decoration:underline; text-underline-offset:.2em; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.decline-link:focus-visible{ outline:2px solid #8C3214; outline-offset:2px; }
+.reply.declining .seg{ display:none; }
 .reply__err{ grid-column:1/-1; order:3; text-align:center; font-size:.95rem; line-height:1.2; color:#A4421E; }
 .reply__done{ position:relative; margin-top:.9rem; padding-inline:2.6rem; text-align:center; font-style:italic; line-height:1.35; color:#6E2A12; }
 .reply__done b{ font-weight:500; color:#8C3214; }
 .sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 
 /* --- footer --- */
-.footer{ text-align:center; padding-block:clamp(2.5rem,7vw,4.5rem) calc(var(--reply-h,11rem) + 2.5rem); }
+.footer{ text-align:center; padding-block:clamp(2.5rem,7vw,4.5rem) 2.5rem; }
 .footer__logo{ width:clamp(9rem,30vw,12.5rem); margin-inline:auto; }
 .footer__meta{ margin-top:1.2rem; font-family:var(--sans); font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:var(--soft); }
 
@@ -423,6 +439,43 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
     </div>
   </section>
 
+  <section class="save" aria-labelledby="save-h">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="saveEyebrow">Kindly respond</p>
+      <h2 class="section-title" id="save-h" data-i18n="saveTitle">We would be honoured<br>by your presence</h2>
+      <p class="save__text" data-i18n="saveText">Please confirm below so we can welcome you properly.</p>
+    </div>
+  </section>
+<aside class="reply" id="reply" data-i18n-aria="replyAria" aria-label="RSVP">
+  <img class="reply__orn" src="assets/art/l-quatrefoil.webp" width="260" height="260" alt="">
+  <img class="reply__sprig reply__sprig--l" src="assets/art/l-sprig-b.webp" width="350" height="370" alt="">
+  <img class="reply__sprig reply__sprig--r" src="assets/art/l-jasmine.webp" width="410" height="380" alt="">
+  <h2 class="reply__h" id="replyH" data-i18n="replyH">Can you confirm?</h2>
+  <form id="rsvpForm" novalidate>
+    <label class="sr" for="f-name" data-i18n="nameLabel">Your name</label>
+    <input id="f-name" data-i18n-ph="namePh" dir="auto" name="name" type="text" autocomplete="name" placeholder="Your Name" required>
+    <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit" data-i18n="send">Confirm</button>
+    <div class="seg" role="radiogroup" data-i18n-aria="attGroup" aria-label="Attending">
+      <input type="radio" id="f-solo" name="attending" value="solo" checked><label for="f-solo" data-i18n="solo">Attending</label>
+      <input type="radio" id="f-plus" name="attending" value="plus-one"><label for="f-plus" data-i18n="plus">Attending with +1</label>
+      <input type="radio" id="f-more" name="attending" value="plus-one"><label for="f-more" data-i18n="more">Attending with +more</label>
+    </div>
+    <div class="more" id="more" hidden>
+      <span id="moreLabel" data-i18n="moreLabel">How many are joining you?</span>
+      <div class="more__step" role="group" aria-labelledby="moreLabel">
+        <button type="button" id="moreLess" data-i18n-aria="moreLess" aria-label="One guest fewer">&minus;</button>
+        <output id="moreN" aria-live="polite">2</output>
+        <button type="button" id="moreAdd" data-i18n-aria="moreAdd" aria-label="One guest more">+</button>
+      </div>
+      <input type="hidden" name="extra" id="f-extra" value="1">
+    </div>
+    <input class="decline" type="radio" id="f-no" name="attending" value="no" tabindex="-1" aria-hidden="true">
+    <button class="decline-link" id="declineLink" type="button" data-i18n="no">Can&rsquo;t make it?</button>
+    <p class="reply__err" id="sendErr" role="alert" hidden data-i18n="sendErr">That didn&rsquo;t send. Please check your connection and try again.</p>
+  </form>
+  <p class="reply__done" id="sent" role="status" hidden></p>
+</aside>
   <footer class="footer">
     <div class="wrap">
       <img class="footer__logo" src="assets/logo-on-rustic.svg" width="2360" height="2176" loading="lazy" alt="Hana and Aly monogram">
@@ -430,25 +483,6 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
     </div>
   </footer>
 </main>
-<aside class="reply" id="reply" data-i18n-aria="replyAria" aria-label="RSVP">
-  <img class="reply__orn" src="assets/art/l-quatrefoil.webp" width="260" height="260" alt="">
-  <img class="reply__sprig reply__sprig--l" src="assets/art/l-sprig-b.webp" width="350" height="370" alt="">
-  <img class="reply__sprig reply__sprig--r" src="assets/art/l-jasmine.webp" width="410" height="380" alt="">
-  <h2 class="reply__h" id="replyH" data-i18n="replyH">Will we see you there?</h2>
-  <form id="rsvpForm" novalidate>
-    <label class="sr" for="f-name" data-i18n="nameLabel">Full name</label>
-    <input id="f-name" data-i18n-ph="namePh" dir="auto" name="name" type="text" autocomplete="name" placeholder="Your full name" required>
-    <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button class="btn" type="submit" data-i18n="send">Send reply</button>
-    <div class="seg" role="radiogroup" data-i18n-aria="attGroup" aria-label="Attending">
-      <input type="radio" id="f-solo" name="attending" value="solo" checked><label for="f-solo" data-i18n="solo">Attending</label>
-      <input type="radio" id="f-plus" name="attending" value="plus-one"><label for="f-plus" data-i18n="plus">Attending with +1</label>
-      <input type="radio" id="f-no" name="attending" value="no"><label for="f-no" data-i18n="no">Can&rsquo;t make it</label>
-    </div>
-    <p class="reply__err" id="sendErr" role="alert" hidden data-i18n="sendErr">That didn&rsquo;t send. Please check your connection and try again.</p>
-  </form>
-  <p class="reply__done" id="sent" role="status" hidden></p>
-</aside>
 <script>
 (() => {
   'use strict';
@@ -456,11 +490,11 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
   const byId = id => document.getElementById(id);
 
   /* languages: English is what's in the page, Arabic comes from this table. ?lang=ar opens it directly */
-  const AR = {"scroll": "انزل لتحت", "title": "هنا وعلي — ٢١ نوفمبر ٢٠٢٦ — قصر الأمير محمد علي، المنيل", "skip": "انزل للمحتوى", "gateAria": "افتح الدعوة", "names": "هنا وعلي", "dateDots": "٢١ نوفمبر ٢٠٢٦", "tap": "افتح الدعوة", "kicker": "وسط أهلهم وحبايبهم", "sub": "هيتجوزوا", "date1": "٢١ نوفمبر", "year": "٢٠٢٦", "venueLine": "قصر الأمير محمد علي، المنيل، القاهرة", "invited": "إنتو معزومين", "inviteH": "احتفلوا معانا<br>ببداية عمرنا سوا", "inviteLede": "فرحانين جدًا إننا نعزمكم تكونوا معانا تحت البرجولا في قصر الأمير محمد علي، في ليلة كلها بهجة وقلوب فرحانة وحب كتير.", "presence": "وجودكم معانا بالدنيا كلها.<span class=\"accent\">مستنيينكم.</span>", "tail": "مش قادرين نستنى نفرح معاكم", "counting": "فاضل", "countH": "على يوم فرحنا", "days": "يوم", "hours": "ساعة", "minutes": "دقيقة", "seconds": "ثانية", "place": "المكان", "venueH": "تحت البرجولا في<br><em>قصر الأمير محمد علي</em>", "dtDate": "اليوم", "ddDate": "<b>السبت، ٢١ نوفمبر ٢٠٢٦</b>", "dtTime": "الميعاد", "ddTime": "<b>الساعة ٥:٠٠ مساءً بالظبط</b>", "dtWhere": "العنوان", "ddWhere": "<b>قصر الأمير محمد علي (قصر المنيل)</b><br>١ شارع السراي، المنيل، القاهرة، مصر", "mapAria": "افتح قصر الأمير محمد علي على جوجل مابس", "mapCta": "افتح على جوجل مابس", "mapTitle": "خريطة قصر الأمير محمد علي", "footer": "٢١ نوفمبر ٢٠٢٦ &nbsp;—&nbsp; القاهرة", "replyAria": "تأكيد الحضور", "replyH": "هنشوفكم هناك؟", "nameLabel": "الاسم بالكامل", "namePh": "الاسم بالكامل", "send": "ابعت الرد", "attGroup": "هتحضر؟", "solo": "هحضر", "plus": "هحضر ومعايا حد", "no": "للأسف مش هقدر", "sendErr": "الرد موصلش. اتأكد من النت وجرب تاني.", "floorAlt": "تصميم ساحة الرقص، دايرة بألوان البرتقالي والخوخي والزيتوني وفي نصها أول حرفين من اسم العروسين.", "venueAlt": "رسمة لقصر الأمير محمد علي"};
-  const EN = { title: document.title, send: 'Send reply', sending: 'Sending\u2026', play: 'Play music', pause: 'Pause music',
-    thanks: n => `Thank you, ${n}. We can\u2019t wait to celebrate with you.`, miss: n => `Thank you, ${n}. We\u2019ll miss you.` };
+  const AR = {"scroll": "انزل لتحت", "title": "هنا وعلي — ٢١ نوفمبر ٢٠٢٦ — قصر الأمير محمد علي، المنيل", "skip": "انزل للمحتوى", "gateAria": "افتح الدعوة", "names": "هنا وعلي", "dateDots": "٢١ نوفمبر ٢٠٢٦", "tap": "افتح الدعوة", "kicker": "وسط أهلهم وحبايبهم", "sub": "هيتجوزوا", "date1": "٢١ نوفمبر", "year": "٢٠٢٦", "venueLine": "قصر الأمير محمد علي، المنيل، القاهرة", "invited": "إنتو معزومين", "inviteH": "احتفلوا معانا<br>ببداية عمرنا سوا", "inviteLede": "فرحانين جدًا إننا نعزمكم تكونوا معانا تحت البرجولا في قصر الأمير محمد علي، في ليلة كلها بهجة وقلوب فرحانة وحب كتير.", "presence": "وجودكم معانا بالدنيا كلها.<span class=\"accent\">مستنيينكم.</span>", "tail": "مش قادرين نستنى نفرح معاكم", "counting": "فاضل", "countH": "على يوم فرحنا", "days": "يوم", "hours": "ساعة", "minutes": "دقيقة", "seconds": "ثانية", "place": "المكان", "venueH": "تحت البرجولا في<br><em>قصر الأمير محمد علي</em>", "dtDate": "اليوم", "ddDate": "<b>السبت، ٢١ نوفمبر ٢٠٢٦</b>", "dtTime": "الميعاد", "ddTime": "<b>الساعة ٥:٠٠ مساءً بالظبط</b>", "dtWhere": "العنوان", "ddWhere": "<b>قصر الأمير محمد علي (قصر المنيل)</b><br>١ شارع السراي، المنيل، القاهرة، مصر", "mapAria": "افتح قصر الأمير محمد علي على جوجل مابس", "mapCta": "افتح على جوجل مابس", "mapTitle": "خريطة قصر الأمير محمد علي", "footer": "٢١ نوفمبر ٢٠٢٦ &nbsp;—&nbsp; القاهرة", "replyAria": "تأكيد الحضور", "replyH": "تقدر تأكد حضورك؟", "nameLabel": "اسمك", "namePh": "اسمك", "send": "تأكيد", "attGroup": "هتحضر؟", "solo": "هحضر", "plus": "هحضر ومعايا حد", "sendErr": "الرد موصلش. اتأكد من النت وجرب تاني.", "floorAlt": "تصميم ساحة الرقص، دايرة بألوان البرتقالي والخوخي والزيتوني وفي نصها أول حرفين من اسم العروسين.", "venueAlt": "رسمة لقصر الأمير محمد علي", "saveTitle": "يشرفنا حضوركم", "saveEyebrow": "برجاء تأكيد الحضور", "moreLabel": "هييجي معاك كام؟", "moreLess": "شيل ضيف", "moreAdd": "زوّد ضيف", "more": "هحضر ومعايا ناس", "saveText": "أكدوا من هنا عشان نستقبلكم أحلى استقبال.", "no": "مش هتقدر تيجي؟"};
+  const EN = { title: document.title, send: 'Confirm', sending: 'Sending\u2026', play: 'Play music', pause: 'Pause music',
+    declineH: 'Sorry you can\u2019t make it', sendNo: 'Send', back: 'Back', no: 'Can\u2019t make it?', yesH: 'Can you confirm?', thanks: n => `Thank you, ${n}. We can\u2019t wait to celebrate with you.`, miss: n => `Thank you, ${n}. We\u2019ll miss you.` };
   Object.assign(AR, { sending: 'بنبعت\u2026', play: 'شغّل المزيكا', pause: 'وقّف المزيكا',
-    thanks: n => `شكرًا يا ${n}. مستنيينك نفرح سوا.`, miss: n => `شكرًا يا ${n}. كان نفسنا نشوفك.` });
+    declineH: 'خسارة إنك مش هتقدر تيجي', sendNo: 'ابعت', back: 'رجوع', yesH: AR.replyH, thanks: n => `شكرًا يا ${n}. مستنيينك نفرح سوا.`, miss: n => `شكرًا يا ${n}. كان نفسنا نشوفك.` });
   let lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
   const t = k => (lang === 'ar' ? AR : EN)[k];
   const digits = s => lang === 'ar' ? String(s).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]) : String(s);
@@ -531,16 +565,12 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
   const spinInJs = !reduced && !CSS.supports('animation-timeline', 'view()');
   let screenH = innerHeight, screenW = innerWidth;
   addEventListener('resize', () => { if (innerWidth !== screenW) { screenW = innerWidth; screenH = innerHeight; } }, { passive: true });
+  /* once the footer shows, the form has settled into its section and needs no shadow */
+  new IntersectionObserver(([e]) => reply.classList.toggle('rest', e.isIntersecting)).observe(document.querySelector('.footer'));
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll, { passive: true });
   onScroll();
 
-  let replyH = -1;
-  const measure = () => {
-    const h = reply.offsetHeight;
-    if (h !== replyH) { replyH = h; document.documentElement.style.setProperty('--reply-h', h + 'px'); }
-  };
-  measure(); addEventListener('resize', measure, { passive: true });
 
   /* music: browsers only allow sound after a tap, which the entrance provides */
   const audio = byId('music'), sound = byId('sound');
@@ -619,9 +649,32 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
     visualViewport.addEventListener('scroll', lift);
   }
 
+  /* "+1" is one guest; "+ More guests" opens the counter from two. The Sheet keeps the same cap */
+  const MAX_EXTRA = 5, more = byId('more'), moreN = byId('moreN'), extra = byId('f-extra'), many = byId('f-more');
+  let count = 2;
+  function setCount(n) {
+    count = n; moreN.textContent = digits(n);
+    byId('moreLess').disabled = n <= 2; byId('moreAdd').disabled = n >= MAX_EXTRA;
+    extra.value = many.checked ? n : 1;
+  }
+  byId('rsvpForm').addEventListener('change', () => { more.hidden = !many.checked; setCount(count); });
+  byId('moreLess').addEventListener('click', () => setCount(count - 1));
+  byId('moreAdd').addEventListener('click', () => setCount(count + 1));
+  setCount(2);
+
   /* RSVP: the thank-you only appears once the Sheet has confirmed the reply */
   const RSVP_URL = 'https://script.google.com/macros/s/AKfycbxbJ8h7J_hRHch2-EQpCt9kanA48lrp7ZFr56hxT8bYmFgpIWJKu9Y-Cs70rBsXxkuJbQ/exec';
   const form = byId('rsvpForm'), done = byId('sent'), err = byId('sendErr'), send = form.querySelector('.btn');
+  /* can't make it sits outside the three choices: it swaps the form for a short step of its own */
+  const decline = byId('declineLink'), replyTitle = byId('replyH'), sendLabel = () => t(byId('f-no').checked ? 'sendNo' : 'send');
+  decline.addEventListener('click', () => {
+    const declining = !byId('f-no').checked;
+    byId(declining ? 'f-no' : 'f-solo').checked = true;
+    reply.classList.toggle('declining', declining); more.hidden = true; err.hidden = true;
+    replyTitle.textContent = t(declining ? 'declineH' : 'yesH');
+    decline.textContent = t(declining ? 'back' : 'no');
+    send.textContent = sendLabel();
+  });
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const name = form.elements.name, guest = name.value.trim();
@@ -635,13 +688,12 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
       clearTimeout(timer);
       if (!(await res.json()).ok) throw new Error('rejected');
     } catch (_) {
-      err.hidden = false; send.disabled = false; send.textContent = t('send');
+      err.hidden = false; send.disabled = false; send.textContent = sendLabel();
       return;
     }
     const first = guest.split(/\s+/)[0];
     done.textContent = t(form.elements.attending.value === 'no' ? 'miss' : 'thanks')(first);
-    form.hidden = true; byId('replyH').hidden = true; done.hidden = false; measure();
-    setTimeout(() => { reply.remove(); measure(); }, 6000);
+    form.hidden = true; byId('replyH').hidden = true; done.hidden = false; reply.classList.add('done');
   });
 
   /* drifting leaves */
