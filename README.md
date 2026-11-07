@@ -94,7 +94,7 @@ music, because browsers block sound until a tap. If nobody taps, the doors open 
 
 Music: `assets/audio/aloula.m4a`, supplied by the couple (`aloula_EWxd4WxR.mp3`), with the silent ending trimmed and compressed to 128 kbps AAC for phones.
 
-Phones: the orange frame is drawn to a canvas behind the closed doors, so only the plain middle of `o-frame-tall.webp` stretches, the arches, columns and flowers always fit, and it all appears at once. The doors wait for the art to decode, for up to 4 seconds. The dance floor turns from CSS (`animation-timeline`) where the browser supports it, otherwise from the scroll handler. Check phone changes in real Safari, since Chrome's phone emulation has no collapsing toolbar.
+Phones: the orange frame is drawn to a canvas behind the closed doors, so only the plain middle of `o-arch-tall.webp` flexes, the arches, columns and flowers always fit, and it all appears at once. The doors wait for the art to decode, for up to 4 seconds. The dance floor turns from CSS (`animation-timeline`) where the browser supports it, otherwise from the scroll handler. Check phone changes in real Safari, since Chrome's phone emulation has no collapsing toolbar.
 
 Languages: English by default, Arabic from the corner button or `?lang=ar`; the choice is remembered. The Arabic is light Egyptian, not formal. It lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
 

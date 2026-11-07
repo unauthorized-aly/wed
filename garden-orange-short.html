@@ -20,8 +20,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://unauthorized-aly.github.io/wed/assets/share-palace.jpg">
 <link rel="icon" href="assets/logo-on-rustic.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="assets/art/o-frame-tall.webp" media="(max-aspect-ratio:1/1)" fetchpriority="high">
-<link rel="preload" as="image" href="assets/art/o-frame.webp" media="(min-aspect-ratio:1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/art/o-arch-tall.webp" media="(max-aspect-ratio:1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/art/o-arch.webp" media="(min-aspect-ratio:1/1)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Amiri:wght@400;700&family=Tajawal:wght@400;500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
@@ -319,11 +319,13 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
 /* the arched frame: landscape on screens, the tall rebuild on phones */
 .art{ inset:0; left:0; top:0; transform:none; width:100%; height:100%; }
 .art img{ width:100%; height:100%; object-fit:cover; }
-@media (min-aspect-ratio:1/1){ .pin{ padding-bottom:6rem; } }
+@media (min-aspect-ratio:1/1){ .pin{ padding-bottom:9.5rem; } }
 /* phones: padding keeps the words inside the frame, which is drawn in the script below */
 @media (max-aspect-ratio:1/1){
-  .pin{ --w:min(100vw,75svh); padding-block:calc(var(--w)*.285) calc(var(--w)*.43); }
-  .logo{ width:min(58vw,34svh,27rem); }
+  .pin{ --w:min(100vw,75svh); padding-block:calc(var(--w)*.285) calc(var(--w)*.46); }
+  .logo{ width:min(50vw,30svh,27rem); }
+  .cue{ margin-top:.45rem; gap:.2rem; }
+  .cue__line{ height:.95rem; }
 }
 .pin{ align-content:center; }
 .logo{ width:min(68vw,40svh,27rem); }
@@ -365,7 +367,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
 <main id="main">
   <header class="hero" id="hero">
     <div class="pin">
-      <picture class="art"><source media="(max-aspect-ratio:1/1)" srcset="assets/art/o-frame-tall.webp"><img src="assets/art/o-frame.webp" width="1672" height="941" alt="" fetchpriority="high" decoding="sync"></picture>
+      <picture class="art"><source media="(max-aspect-ratio:1/1)" srcset="assets/art/o-arch-tall.webp"><img src="assets/art/o-arch.webp" width="2000" height="1250" alt="" fetchpriority="high" decoding="sync"></picture>
       <div class="hero__inner">
         <p class="hero__kicker rise d1" data-i18n="kicker">Together with their families</p>
         <img class="logo" src="assets/logo-on-rustic.svg" width="2360" height="2176" alt="">
@@ -575,7 +577,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
   });
 
   /* the entrance */
-  /* phones: the arches and flowers keep their shape and only the plain middle of the art stretches, so nothing is cropped.
+  /* phones: the arches and flowers keep their shape and only the plain middle of the art flexes, so nothing is cropped.
      It is drawn in one go behind the closed doors: Safari paints a sliced CSS border-image piece by piece, arches last */
   const artImg = document.querySelector('.art img'), frame = document.createElement('canvas'), tall = matchMedia('(max-aspect-ratio:1/1)');
   frame.className = 'art'; frame.hidden = true; artImg.parentElement.after(frame);
@@ -583,8 +585,8 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
     const { naturalWidth: iw, naturalHeight: ih } = artImg;
     frame.hidden = !tall.matches || !iw || iw > ih;
     if (frame.hidden) return;
-    const { width: W, height: H } = frame.parentElement.getBoundingClientRect(), scale = Math.min(devicePixelRatio || 1, 2.5);
-    const u = Math.min(W, H * .75), top = 480, bottom = 585, T = Math.round(u * top / iw), B = Math.round(u * bottom / iw);
+    const { width: W, height: H } = frame.parentElement.getBoundingClientRect(), scale = Math.min(devicePixelRatio || 1, 3);
+    const u = Math.min(W, H * .75), top = 987, bottom = 1090, T = Math.round(u * top / iw), B = Math.round(u * bottom / iw);
     frame.width = Math.round(W * scale); frame.height = Math.round(H * scale);
     const ctx = frame.getContext('2d');
     ctx.imageSmoothingQuality = 'high'; ctx.scale(scale, scale);
