@@ -12,14 +12,16 @@
 <meta property="og:url" content="https://unauthorized-aly.github.io/wed/garden-orange-short.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ar_EG">
-<meta property="og:title" content="Hana &amp; Aly — 21 November 2026">
-<meta property="og:description" content="Together with their families — under the pergola of Mohamed Ali Palace, Manial, Cairo.">
-<meta property="og:image" content="https://unauthorized-aly.github.io/wed/assets/share-logo.jpg">
+<meta property="og:title" content="Hana &amp; Aly — 21 November 2026 — Manial Palace, Cairo">
+<meta property="og:description" content="Together with their families — under the pergola of Prince Mohamed Ali Palace, Manial Palace, Cairo.">
+<meta property="og:image" content="https://unauthorized-aly.github.io/wed/assets/share-manial.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://unauthorized-aly.github.io/wed/assets/share-logo.jpg">
+<meta name="twitter:image" content="https://unauthorized-aly.github.io/wed/assets/share-manial.jpg">
 <link rel="icon" href="assets/logo-on-rustic.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/art/o-frame-tall.webp" media="(max-aspect-ratio:1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/art/o-frame.webp" media="(min-aspect-ratio:1/1)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Amiri:wght@400;700&family=Tajawal:wght@400;500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
@@ -66,9 +68,7 @@ section{ position:relative; }
 .pin{ position:relative; min-height:100svh; overflow:hidden; display:grid; isolation:isolate; }
 .art{
   position:absolute; z-index:-1; left:50%; top:50%; transform:translate(-50%,-50%);
-  animation:artIn 1.2s var(--ease-out) both;
 }
-@keyframes artIn{ from{ opacity:0; } }
 .hero__inner{ text-align:center; width:100%; padding-inline:var(--gutter); }
 .hero__kicker,.hero__sub{ font-family:var(--sans); text-transform:uppercase; letter-spacing:.34em; margin-left:.34em; color:var(--hero-small); }
 .hero__kicker{ font-size:clamp(.6rem,.3vw + .56rem,.76rem); }
@@ -81,12 +81,24 @@ section{ position:relative; }
 .rise{ animation:rise 1.2s var(--ease-out) both; }
 .d1{animation-delay:.15s}.d2{animation-delay:.5s}.d3{animation-delay:.7s}.d4{animation-delay:.9s}
 @keyframes rise{ from{ opacity:0; transform:translateY(20px); } }
+.hero__inner{ position:relative; }
+/* tells guests there is more below, and goes away as soon as they scroll */
 .cue{
-  position:absolute; left:50%; bottom:clamp(.6rem,1.6svh,1.2rem); translate:-50% 0;
-  display:grid; justify-items:center; gap:.4rem; font-family:var(--sans); font-size:.6rem;
-  letter-spacing:.32em; text-transform:uppercase; color:var(--hero-small);
+  position:absolute; left:50%; top:100%; translate:-50% 0; margin-top:.7rem; pointer-events:none;
+  display:grid; justify-items:center; gap:.3rem; font-family:var(--sans); font-size:.6rem; line-height:1;
+  letter-spacing:.32em; text-indent:.32em; text-transform:uppercase; white-space:nowrap; color:var(--hero-name);
+  animation:cueIn 1s var(--ease-out) 1.3s backwards; transition:opacity .35s ease;
 }
-.cue__line{ width:1px; height:clamp(1.4rem,3.6svh,2.2rem); background:currentColor; position:relative; overflow:hidden; opacity:.7; }
+.cue.gone{ opacity:0; }
+@keyframes cueIn{ from{ opacity:0; } }
+.cue__line{ position:relative; width:1px; height:1.5rem; overflow:hidden; }
+.cue__line::before,.cue__line::after{ content:""; position:absolute; inset:0; background:currentColor; }
+.cue__line::before{ opacity:.28; }
+.cue__line::after{ animation:cueDrop 1.8s cubic-bezier(.6,0,.2,1) infinite; }
+@keyframes cueDrop{ from{ transform:translateY(-100%); } 60%{ transform:none; } to{ transform:translateY(100%); } }
+.cue__chev{ width:.5rem; height:.5rem; margin-top:-.32rem; border-right:1px solid; border-bottom:1px solid; rotate:45deg; animation:cueBob 1.8s ease-in-out infinite; }
+@keyframes cueBob{ 0%,100%{ translate:0 -.1rem; opacity:.55; } 60%{ translate:0 .22rem; opacity:1; } }
+html[lang=ar] .cue{ font-size:.82rem; text-indent:0; }
 
 /* --- reveal --- */
 .reveal{
@@ -187,7 +199,7 @@ section{ position:relative; }
 /* --- the entrance: a closed invitation. tapping parts the doors and starts the music --- */
 .gate{ display:none; }
 html.intro body{ overflow:hidden; }
-html.waiting .rise,html.waiting .logo,html.waiting .art{ animation-play-state:paused; }
+html.waiting .rise,html.waiting .logo,html.waiting .cue{ animation-play-state:paused; }
 html.intro .gate{
   display:grid; place-items:center; position:fixed; inset:0; z-index:100; width:100%; padding:0; border:0;
   background:none; color:var(--gate-ink); font:inherit; cursor:pointer; overflow:hidden; -webkit-tap-highlight-color:transparent;
@@ -307,13 +319,10 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
 /* the arched frame: landscape on screens, the tall rebuild on phones */
 .art{ inset:0; left:0; top:0; transform:none; width:100%; height:100%; }
 .art img{ width:100%; height:100%; object-fit:cover; }
-/* phones: the arches and flowers keep their shape and only the plain middle of the art flexes, so nothing is cropped */
+@media (min-aspect-ratio:1/1){ .pin{ padding-bottom:6rem; } }
+/* phones: padding keeps the words inside the frame, which is drawn in the script below */
 @media (max-aspect-ratio:1/1){
   .pin{ --w:min(100vw,75svh); padding-block:calc(var(--w)*.285) calc(var(--w)*.43); }
-  .art{ border:solid transparent; border-width:calc(var(--w)*.4286) 0 calc(var(--w)*.5223) 0;
-    border-image:url("assets/art/o-frame-tall.webp") 480 0 585 0 fill stretch; }
-  .art img{ display:none; }
-  .cue{ display:none; }
   .logo{ width:min(58vw,34svh,27rem); }
 }
 .pin{ align-content:center; }
@@ -324,8 +333,6 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
 .deco--tl{ left:0; top:0; width:clamp(5.6rem,30vw,26rem); }
 .deco--br{ right:0; bottom:0; width:clamp(9.5rem,36vw,28rem); }
 .orn{ width:clamp(2.2rem,6vw,3rem); margin-inline:auto; }
-.cue{ bottom:19svh; }
-@media (min-aspect-ratio:1/1),(max-height:700px){ .cue{ display:none; } }
 @media (max-width:40rem){ .invite.section-pad{ padding-block:2.5rem 7rem; } }
 
 @media (prefers-reduced-motion:reduce){
@@ -358,7 +365,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
 <main id="main">
   <header class="hero" id="hero">
     <div class="pin">
-      <picture class="art"><source media="(max-aspect-ratio:1/1)" srcset="assets/art/o-frame-tall.webp"><img src="assets/art/o-frame.webp" width="1672" height="941" alt="" fetchpriority="high"></picture>
+      <picture class="art"><source media="(max-aspect-ratio:1/1)" srcset="assets/art/o-frame-tall.webp"><img src="assets/art/o-frame.webp" width="1672" height="941" alt="" fetchpriority="high" decoding="sync"></picture>
       <div class="hero__inner">
         <p class="hero__kicker rise d1" data-i18n="kicker">Together with their families</p>
         <img class="logo" src="assets/logo-on-rustic.svg" width="2360" height="2176" alt="">
@@ -367,8 +374,8 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
         <img class="orn rise d3" src="assets/art/o-orn-b.webp" alt="" style="margin-block:.35rem;width:1.5rem">
         <p class="hero__date rise d3"><span data-i18n="date1">21 November</span><span data-i18n="year">2026</span></p>
         <p class="hero__venue rise d4" data-i18n="venueLine">Mohamed Ali Palace &middot; Manial, Cairo</p>
+        <div class="cue" aria-hidden="true"><span data-i18n="scroll">Scroll</span><span class="cue__line"></span><span class="cue__chev"></span></div>
       </div>
-      <div class="cue" aria-hidden="true"><span class="cue__line"></span><span data-i18n="scroll">Scroll</span></div>
     </div>
   </header>
 
@@ -452,11 +459,11 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
   const byId = id => document.getElementById(id);
 
   /* languages: English is what's in the page, Arabic comes from this table. ?lang=ar opens it directly */
-  const AR = {"scroll": "مرّر", "title": "هنا وعلي — ٢١ نوفمبر ٢٠٢٦ — قصر الأمير محمد علي، القاهرة", "skip": "تخطَّ إلى المحتوى", "gateAria": "افتح الدعوة", "names": "هنا وعلي", "dateDots": "٢١ نوفمبر ٢٠٢٦", "tap": "اضغط للفتح", "kicker": "مع عائلتيهما", "sub": "يحتفلان بزفافهما", "date1": "٢١ نوفمبر", "year": "٢٠٢٦", "venueLine": "قصر الأمير محمد علي، المنيل، القاهرة", "invited": "أنتم مدعوون", "inviteH": "شاركونا<br>بداية العمر", "inviteLede": "يسعدنا أن ندعوكم لمشاركتنا تحت برجولا قصر الأمير محمد علي، في أمسية مليئة بالأجواء الجميلة والقلوب السعيدة والكثير من الحب.", "presence": "حضوركم يعني لنا الكثير.<span class=\"accent\">في انتظاركم.</span>", "tail": "نتطلع للاحتفال معكم", "counting": "العد التنازلي", "countH": "حتى يوم زفافنا", "days": "يوم", "hours": "ساعة", "minutes": "دقيقة", "seconds": "ثانية", "place": "المكان", "venueH": "تحت برجولا<br><em>قصر الأمير محمد علي</em>", "dtDate": "التاريخ", "ddDate": "<b>السبت، ٢١ نوفمبر ٢٠٢٦</b>", "dtTime": "الموعد", "ddTime": "<b>يبدأ الحفل في تمام الساعة ٥:٠٠ مساءً</b>", "dtWhere": "العنوان", "ddWhere": "<b>قصر الأمير محمد علي (قصر المنيل)</b><br>١ شارع السراي، المنيل، القاهرة، مصر", "mapAria": "افتح قصر الأمير محمد علي في خرائط جوجل", "mapCta": "افتح في خرائط جوجل", "mapTitle": "خريطة توضح موقع قصر الأمير محمد علي", "footer": "٢١ نوفمبر ٢٠٢٦ &nbsp;—&nbsp; القاهرة", "replyAria": "تأكيد الحضور", "replyH": "هل سنراكم هناك؟", "nameLabel": "الاسم بالكامل", "namePh": "اسمك بالكامل", "send": "إرسال الرد", "attGroup": "الحضور", "solo": "سأحضر", "plus": "سأحضر مع مرافق", "no": "أعتذر عن الحضور", "sendErr": "لم يتم الإرسال. يرجى التحقق من الاتصال والمحاولة مرة أخرى.", "floorAlt": "تصميم حلبة الرقص، ميدالية بألوان البرتقالي والخوخي والزيتوني يتوسطها الحرفان الأولان من اسمي العروسين.", "venueAlt": "لوحة فنية لقصر الأمير محمد علي"};
+  const AR = {"scroll": "انزل لتحت", "title": "هنا وعلي — ٢١ نوفمبر ٢٠٢٦ — قصر المنيل، القاهرة", "skip": "انزل للمحتوى", "gateAria": "افتح الدعوة", "names": "هنا وعلي", "dateDots": "٢١ نوفمبر ٢٠٢٦", "tap": "افتح الدعوة", "kicker": "وسط أهلهم وحبايبهم", "sub": "هيتجوزوا", "date1": "٢١ نوفمبر", "year": "٢٠٢٦", "venueLine": "قصر الأمير محمد علي، المنيل، القاهرة", "invited": "إنتو معزومين", "inviteH": "احتفلوا معانا<br>ببداية عمرنا سوا", "inviteLede": "فرحانين جدًا إننا نعزمكم تكونوا معانا تحت البرجولا في قصر الأمير محمد علي، في ليلة كلها بهجة وقلوب فرحانة وحب كتير.", "presence": "وجودكم معانا بالدنيا كلها.<span class=\"accent\">مستنيينكم.</span>", "tail": "مش قادرين نستنى نفرح معاكم", "counting": "فاضل", "countH": "على يوم فرحنا", "days": "يوم", "hours": "ساعة", "minutes": "دقيقة", "seconds": "ثانية", "place": "المكان", "venueH": "تحت البرجولا في<br><em>قصر الأمير محمد علي</em>", "dtDate": "اليوم", "ddDate": "<b>السبت، ٢١ نوفمبر ٢٠٢٦</b>", "dtTime": "الميعاد", "ddTime": "<b>الساعة ٥:٠٠ مساءً بالظبط</b>", "dtWhere": "العنوان", "ddWhere": "<b>قصر الأمير محمد علي (قصر المنيل)</b><br>١ شارع السراي، المنيل، القاهرة، مصر", "mapAria": "افتح قصر الأمير محمد علي على جوجل مابس", "mapCta": "افتح على جوجل مابس", "mapTitle": "خريطة قصر الأمير محمد علي", "footer": "٢١ نوفمبر ٢٠٢٦ &nbsp;—&nbsp; القاهرة", "replyAria": "تأكيد الحضور", "replyH": "هنشوفكم هناك؟", "nameLabel": "الاسم بالكامل", "namePh": "الاسم بالكامل", "send": "ابعت الرد", "attGroup": "هتحضر؟", "solo": "هحضر", "plus": "هحضر ومعايا حد", "no": "للأسف مش هقدر", "sendErr": "الرد موصلش. اتأكد من النت وجرب تاني.", "floorAlt": "تصميم ساحة الرقص، دايرة بألوان البرتقالي والخوخي والزيتوني وفي نصها أول حرفين من اسم العروسين.", "venueAlt": "رسمة لقصر الأمير محمد علي"};
   const EN = { title: document.title, send: 'Send reply', sending: 'Sending\u2026', play: 'Play music', pause: 'Pause music', switchTo: 'Switch to Arabic',
     thanks: n => `Thank you, ${n}. We can\u2019t wait to celebrate with you.`, miss: n => `Thank you, ${n}. We\u2019ll miss you.` };
-  Object.assign(AR, { sending: 'جارٍ الإرسال\u2026', play: 'تشغيل الموسيقى', pause: 'إيقاف الموسيقى', switchTo: 'Switch to English',
-    thanks: n => `شكرًا لك يا ${n}. ننتظرك لنحتفل معًا.`, miss: n => `شكرًا لك يا ${n}. سنفتقدك.` });
+  Object.assign(AR, { sending: 'بنبعت\u2026', play: 'شغّل المزيكا', pause: 'وقّف المزيكا', switchTo: 'Switch to English',
+    thanks: n => `شكرًا يا ${n}. مستنيينك نفرح سوا.`, miss: n => `شكرًا يا ${n}. كان نفسنا نشوفك.` });
   let lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
   const t = k => (lang === 'ar' ? AR : EN)[k];
   const digits = s => lang === 'ar' ? String(s).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]) : String(s);
@@ -514,7 +521,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
   tick(); setInterval(tick, 1000);
 
   /* scroll: progress bar, reply bar, dance floor */
-  const progress = byId('progress'), reply = byId('reply'), floor = byId('floor');
+  const progress = byId('progress'), reply = byId('reply'), floor = byId('floor'), cue = document.querySelector('.cue');
   let queued = false;
   function onScroll() {
     if (queued) return;
@@ -524,6 +531,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
       const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
       progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
       if (y > 0 || reply.contains(document.activeElement)) reply.classList.add('on'); else reply.classList.remove('on');
+      cue.classList.toggle('gone', y > 16);
       if (spinInJs) {
         const b = floor.parentElement.getBoundingClientRect(), off = (b.top + b.height / 2 - screenH / 2) / screenH;
         if (off > -1.2 && off < 1.2) floor.style.transform = `rotate(${(Math.max(-1, Math.min(1, off)) * 170).toFixed(1)}deg)`;
@@ -567,6 +575,26 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
   });
 
   /* the entrance */
+  /* phones: the arches and flowers keep their shape and only the plain middle of the art stretches, so nothing is cropped.
+     It is drawn in one go behind the closed doors: Safari paints a sliced CSS border-image piece by piece, arches last */
+  const artImg = document.querySelector('.art img'), frame = document.createElement('canvas'), tall = matchMedia('(max-aspect-ratio:1/1)');
+  frame.className = 'art'; frame.hidden = true; artImg.parentElement.after(frame);
+  function drawFrame() {
+    const { naturalWidth: iw, naturalHeight: ih } = artImg;
+    frame.hidden = !tall.matches || !iw || iw > ih;
+    if (frame.hidden) return;
+    const { width: W, height: H } = frame.parentElement.getBoundingClientRect(), scale = Math.min(devicePixelRatio || 1, 2.5);
+    const u = Math.min(W, H * .75), top = 480, bottom = 585, T = Math.round(u * top / iw), B = Math.round(u * bottom / iw);
+    frame.width = Math.round(W * scale); frame.height = Math.round(H * scale);
+    const ctx = frame.getContext('2d');
+    ctx.imageSmoothingQuality = 'high'; ctx.scale(scale, scale);
+    ctx.drawImage(artImg, 0, 0, iw, top, 0, 0, W, T);
+    ctx.drawImage(artImg, 0, top, iw, ih - top - bottom, 0, T, W, H - T - B);
+    ctx.drawImage(artImg, 0, ih - bottom, iw, bottom, 0, H - B, W, B);
+  }
+  const artReady = artImg.decode().then(drawFrame).catch(() => {});
+  new ResizeObserver(drawFrame).observe(artImg.parentElement.parentElement);
+
   const gate = byId('gate'), root = document.documentElement, page = [byId('main'), reply, sound];
   if (root.classList.contains('intro')) {
     page.forEach(el => (el.inert = true));
@@ -577,12 +605,15 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
       if (opened) return;
       opened = true;
       if (withMusic) play();
-      gate.classList.add('opening');
-      setTimeout(() => root.classList.remove('waiting'), 450);
-      setTimeout(() => {
-        root.classList.remove('intro'); gate.remove();
-        page.forEach(el => (el.inert = false));
-      }, 1300);
+      /* the doors wait for the art, so it is already in place when they part. Slow connections get 4 seconds */
+      Promise.race([artReady, new Promise(done => setTimeout(done, 4000))]).then(() => {
+        gate.classList.add('opening');
+        setTimeout(() => root.classList.remove('waiting'), 450);
+        setTimeout(() => {
+          root.classList.remove('intro'); gate.remove();
+          page.forEach(el => (el.inert = false));
+        }, 1300);
+      });
     };
     gate.addEventListener('click', () => open(true));
     setTimeout(() => open(false), 8000);
