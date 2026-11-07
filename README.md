@@ -98,7 +98,7 @@ Phones: the orange frame is drawn to a canvas behind the closed doors, so only t
 
 Languages: English by default, Arabic from the corner button or `?lang=ar`; the choice is remembered. The Arabic is light Egyptian, not formal. It lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
 
-Link preview: `assets/share-manial.jpg` (1200x630). The `og:` tags use full addresses for unauthorized-aly.github.io/wed/, so update them if the site moves.
+Link preview: `assets/share-palace.jpg` (1200x630). The `og:` tags use full addresses for unauthorized-aly.github.io/wed/, so update them if the site moves.
 
 All other pages remain in this folder but aren't linked from the landing page. The
 artwork is in `assets/art/` (`l-` light, `o-` orange); `dancefloor.webp` comes from
