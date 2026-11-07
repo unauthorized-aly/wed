@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var l=new URLSearchParams(location.search).get('lang');try{l=l||localStorage.getItem('lang')}catch(e){}if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl'}})()</script>
+<script>if(new URLSearchParams(location.search).get('lang')==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl'}</script>
 <title>Hana &amp; Aly — 21 November 2026 — Mohamed Ali Palace, Manial</title>
 <meta name="description" content="Our wedding site. Mohamed Ali Palace, Manial, Cairo.">
 
@@ -77,10 +77,8 @@ body{
 .desc{ margin:.2rem 0 0; font-size:.98rem; line-height:1.45; max-width:24rem; color:#F2DFCB; }
 .foot{ text-align:center; color:#6E2A12; font-size:.92rem; font-style:italic; }
 @media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
-.lang{ justify-self:center; height:2.6rem; padding:0 1rem; border:1px solid rgba(140,50,20,.4); border-radius:999px; background:#FBF3E6; color:#8C3214; cursor:pointer; font-family:'Amiri','Cormorant Garamond',Georgia,serif; font-size:1rem; }
-html[lang=ar] .lang{ font-family:'Cormorant Garamond',Georgia,serif; }
 html[lang=ar] body{ font-family:'Amiri',Georgia,serif; }
-html[lang=ar] body *:not(.lang){ font-family:'Amiri',Georgia,serif !important; letter-spacing:0 !important; font-style:normal !important; text-transform:none !important; }
+html[lang=ar] body *{ font-family:'Amiri',Georgia,serif !important; letter-spacing:0 !important; font-style:normal !important; text-transform:none !important; }
 </style>
 </head>
 <body>
@@ -107,21 +105,19 @@ html[lang=ar] body *:not(.lang){ font-family:'Amiri',Georgia,serif !important; l
 </div>
 
 <p class="foot" data-i18n="foot">21 November 2026 &middot; Under the pergola, Mohamed Ali Palace, Manial, Cairo</p>
-<button class="lang" id="lang" type="button"></button>
 
 <script>
 (() => {
-  const AR = {"names": "هنا وعلي", "intro": "موقع فرحنا بشكلين. نفس الميعاد ونفس القصر، بصوا عليهم وقولولي أنهي واحد شبهنا أكتر.", "light": "الجنينة الفاتحة", "orange": "الجنينة البرتقالي", "lightD": "برجولا مرسومة بالألوان المائية، ونقوش القصر، وساحة الرقص اللي بتلف.", "orangeD": "أقواس القصر، ونقوش برتقالي، وساحة الرقص اللي بتلف.", "foot": "٢١ نوفمبر ٢٠٢٦ — تحت البرجولا في قصر الأمير محمد علي، المنيل، القاهرة"}, sw = document.getElementById('lang'), slots = document.querySelectorAll('[data-i18n]');
+  const AR = {"names": "هنا وعلي", "intro": "موقع فرحنا بشكلين. نفس الميعاد ونفس القصر، بصوا عليهم وقولولي أنهي واحد شبهنا أكتر.", "light": "الجنينة الفاتحة", "orange": "الجنينة البرتقالي", "lightD": "برجولا مرسومة بالألوان المائية، ونقوش القصر، وساحة الرقص اللي بتلف.", "orangeD": "أقواس القصر، ونقوش برتقالي، وساحة الرقص اللي بتلف.", "foot": "٢١ نوفمبر ٢٠٢٦ — تحت البرجولا في قصر الأمير محمد علي، المنيل، القاهرة"}, slots = document.querySelectorAll('[data-i18n]');
   const en = new Map([...slots].map(el => [el, el.innerHTML])), title = document.title;
   let lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
   function apply() {
     const root = document.documentElement; root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.title = lang === 'ar' ? 'هنا وعلي — ٢١ نوفمبر ٢٠٢٦' : title;
     slots.forEach(el => { el.innerHTML = lang === 'ar' ? AR[el.dataset.i18n] : en.get(el); });
-    sw.textContent = lang === 'ar' ? 'English' : 'العربية';
   }
   apply();
-  sw.addEventListener('click', () => { lang = lang === 'ar' ? 'en' : 'ar'; try { localStorage.setItem('lang', lang); } catch (_) {} apply(); });
+  if (lang === 'ar') document.querySelectorAll('.pick').forEach(a => { a.href += '?lang=ar'; });
 })();
 </script>
 </body>

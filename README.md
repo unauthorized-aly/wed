@@ -96,7 +96,7 @@ Music: `assets/audio/aloula.m4a`, supplied by the couple (`aloula_EWxd4WxR.mp3`)
 
 Phones: the orange frame is drawn to a canvas behind the closed doors, so only the plain middle of `o-arch-tall.webp` flexes, the arches, columns and flowers always fit, and it all appears at once. The doors wait for the art to decode, for up to 4 seconds. The dance floor turns from CSS (`animation-timeline`) where the browser supports it, otherwise from the scroll handler. Check phone changes in real Safari, since Chrome's phone emulation has no collapsing toolbar.
 
-Languages: English by default, Arabic from the button on the welcome doors or in the footer, or `?lang=ar`; the choice is remembered. The Arabic is light Egyptian, not formal. It lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
+Languages: English by default; add `?lang=ar` to a link for Arabic. There is no language button. The Arabic is light Egyptian, not formal. It lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
 
 Link preview: `assets/share-palace.jpg` (1200x630). The `og:` tags use full addresses for unauthorized-aly.github.io/wed/, so update them if the site moves.
 
