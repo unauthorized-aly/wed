@@ -94,6 +94,8 @@ music, because browsers block sound until a tap. If nobody taps, the doors open 
 
 Music: `assets/audio/aloula.m4a`, supplied by the couple (`aloula_EWxd4WxR.mp3`), with the silent ending trimmed and compressed to 128 kbps AAC for phones.
 
+Phones: the orange frame is drawn with `border-image`, so only the plain middle of `o-frame-tall.webp` flexes and the arches, columns and flowers always fit. The dance floor turns from CSS (`animation-timeline`) where the browser supports it, otherwise from the scroll handler. Check phone changes in real Safari, since Chrome's phone emulation has no collapsing toolbar.
+
 Languages: English by default, Arabic from the corner button or `?lang=ar`; the choice is remembered. Arabic text lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
 
 Link preview: `assets/share-logo.jpg` (1200x630). The `og:` tags use full addresses for unauthorized-aly.github.io/wed/, so update them if the site moves.
