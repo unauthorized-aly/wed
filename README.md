@@ -92,9 +92,7 @@ The pages open on a closed-doors entrance: tapping parts the doors and starts th
 music, because browsers block sound until a tap. If nobody taps, the doors open after
 8 seconds without sound, and the music button (top right) still works.
 
-Music: `assets/audio/air-on-the-g-string.m4a`, J.S. Bach, Air, performed by the US Air
-Force Strings. Public domain, no credit required:
-https://commons.wikimedia.org/wiki/File:Air_-_Air_Force_Strings_-_United_States_Air_Force_Band.mp3
+Music: `assets/audio/aloula.m4a`, supplied by the couple (`aloula_EWxd4WxR.mp3`), with the silent ending trimmed and compressed to 128 kbps AAC for phones.
 
 Languages: English by default, Arabic from the corner button or `?lang=ar`; the choice is remembered. Arabic text lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
 
