@@ -77,14 +77,13 @@ body{
 .desc{ margin:.2rem 0 0; font-size:.98rem; line-height:1.45; max-width:24rem; color:#F2DFCB; }
 .foot{ text-align:center; color:#6E2A12; font-size:.92rem; font-style:italic; }
 @media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
-.lang{ position:absolute; z-index:20; top:.8rem; inset-inline-start:.8rem; height:2.6rem; padding:0 1rem; border:1px solid rgba(140,50,20,.4); border-radius:999px; background:#FBF3E6; color:#8C3214; cursor:pointer; font-family:'Amiri','Cormorant Garamond',Georgia,serif; font-size:1rem; }
+.lang{ justify-self:center; height:2.6rem; padding:0 1rem; border:1px solid rgba(140,50,20,.4); border-radius:999px; background:#FBF3E6; color:#8C3214; cursor:pointer; font-family:'Amiri','Cormorant Garamond',Georgia,serif; font-size:1rem; }
 html[lang=ar] .lang{ font-family:'Cormorant Garamond',Georgia,serif; }
 html[lang=ar] body{ font-family:'Amiri',Georgia,serif; }
 html[lang=ar] body *:not(.lang){ font-family:'Amiri',Georgia,serif !important; letter-spacing:0 !important; font-style:normal !important; text-transform:none !important; }
 </style>
 </head>
 <body>
-<button class="lang" id="lang" type="button"></button>
 
 <div class="head">
   <img src="assets/logo-on-cream.svg" width="2360" height="2176" alt="Hana and Aly monogram">
@@ -108,6 +107,7 @@ html[lang=ar] body *:not(.lang){ font-family:'Amiri',Georgia,serif !important; l
 </div>
 
 <p class="foot" data-i18n="foot">21 November 2026 &middot; Under the pergola, Mohamed Ali Palace, Manial, Cairo</p>
+<button class="lang" id="lang" type="button"></button>
 
 <script>
 (() => {

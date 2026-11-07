@@ -224,12 +224,20 @@ html.intro .gate{
 
 /* --- language switch and Arabic: letter-spacing breaks joined letters, so it goes, with italics and capitals --- */
 .lang{
-  position:absolute; z-index:110; top:calc(.7rem + env(safe-area-inset-top)); inset-inline-start:.7rem; height:2.75rem; padding:0 1.05rem;
-  border:1px solid rgba(140,50,20,.4); border-radius:999px; background:#FBF3E6; color:#8C3214; cursor:pointer;
-  font-family:'Amiri','Cormorant Garamond',Georgia,serif; font-size:1rem; line-height:1; box-shadow:0 6px 16px -6px rgba(40,12,2,.5);
+  height:2.75rem; padding:0 1.3rem; border:1px solid; border-radius:999px; background:none; cursor:pointer;
+  font-family:'Amiri','Cormorant Garamond',Georgia,serif; font-size:1rem; line-height:1; -webkit-tap-highlight-color:transparent;
 }
+/* on the welcome doors, under "Tap to open". It sits beside the doors, not inside them, so it doesn't open them */
+.lang--gate{
+  position:fixed; z-index:110; left:50%; translate:-50% 0; bottom:max(calc(1rem + env(safe-area-inset-bottom)),calc(50svh - 17rem));
+  color:var(--gate-ink); border-color:var(--gate-line); animation:rise 1.2s var(--ease-out) .85s backwards; transition:opacity .3s ease;
+}
+@media (min-width:40rem){ .lang--gate{ bottom:max(1.5rem,calc(50svh - 20rem)); } }
+html:not(.intro) .lang--gate{ display:none; }
+.gate.opening ~ .lang--gate{ opacity:0; pointer-events:none; }
+.lang--foot{ display:block; margin:1.3rem auto 0; color:var(--soft); }
 html[lang=ar] .lang{ font-family:'Cormorant Garamond',Georgia,serif; font-size:1.05rem; }
-.lang:focus-visible{ outline:2px solid #8C3214; outline-offset:3px; }
+.lang:focus-visible{ outline:2px solid currentColor; outline-offset:3px; }
 html[lang=ar]{ --serif:'Amiri',Georgia,serif; --sans:'Tajawal',system-ui,sans-serif; }
 html[lang=ar] body *{ letter-spacing:0 !important; font-style:normal !important; text-transform:none !important; }
 html[lang=ar] .section-title{ line-height:1.4; }
@@ -355,7 +363,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
     <span class="gate__tap" data-i18n="tap">Tap to open</span>
   </span>
 </button>
-<button class="lang" id="lang" type="button" lang="ar">العربية</button>
+<button class="lang lang--gate" type="button" lang="ar">العربية</button>
 <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 <audio id="music" src="assets/audio/aloula.m4a" preload="none" loop></audio>
 <button class="sound" id="sound" type="button" aria-pressed="false" aria-label="Play music">
@@ -432,6 +440,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
     <div class="wrap">
       <img class="footer__logo" src="assets/logo-on-rustic.svg" width="2360" height="2176" loading="lazy" alt="Hana and Aly monogram">
       <p class="footer__meta" data-i18n="footer">21 . 11 . 2026 &nbsp;&middot;&nbsp; Cairo</p>
+      <button class="lang lang--foot" type="button" lang="ar">العربية</button>
     </div>
   </footer>
 </main>
@@ -470,7 +479,7 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
   const t = k => (lang === 'ar' ? AR : EN)[k];
   const digits = s => lang === 'ar' ? String(s).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]) : String(s);
   const SLOTS = [['i18n', null], ['i18nAria', 'aria-label'], ['i18nPh', 'placeholder'], ['i18nAlt', 'alt'], ['i18nTitle', 'title']];
-  const original = new Map();
+  const original = new Map(), switches = document.querySelectorAll('.lang');
   function applyLang() {
     const root = document.documentElement;
     root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr'; document.title = t('title');
@@ -482,20 +491,20 @@ html[lang=ar] .hero__date{ font-size:1.1rem; }
       const text = lang === 'ar' ? AR[el.dataset[slot]] : was[slot];
       if (attr) el.setAttribute(attr, text); else el.innerHTML = text;
     });
-    const sw = byId('lang'); sw.textContent = lang === 'ar' ? 'English' : 'العربية'; sw.lang = lang === 'ar' ? 'en' : 'ar'; sw.setAttribute('aria-label', t('switchTo'));
+    switches.forEach(sw => { sw.textContent = lang === 'ar' ? 'English' : 'العربية'; sw.lang = lang === 'ar' ? 'en' : 'ar'; sw.setAttribute('aria-label', t('switchTo')); });
     const snd = byId('sound'); snd.setAttribute('aria-label', t(snd.classList.contains('playing') ? 'pause' : 'play'));
     const map = document.querySelector('.map iframe'), src = map.getAttribute('src').replace(/&hl=ar$/, '') + (lang === 'ar' ? '&hl=ar' : '');
     if (src !== map.getAttribute('src')) map.setAttribute('src', src);
   }
   applyLang();
-  byId('lang').addEventListener('click', () => {
+  switches.forEach(sw => sw.addEventListener('click', () => {
     lang = lang === 'ar' ? 'en' : 'ar';
     try { localStorage.setItem('lang', lang); } catch (_) {}
     try { const u = new URL(location); if (lang === 'ar') u.searchParams.set('lang', 'ar'); else u.searchParams.delete('lang'); history.replaceState(null, '', u); } catch (_) {}
     applyLang();
     Object.keys(last).forEach(k => delete last[k]); tick();
     measure();
-  });
+  }));
 
   /* reveal */
   const els = document.querySelectorAll('.reveal');
