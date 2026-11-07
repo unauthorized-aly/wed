@@ -204,7 +204,10 @@ html.intro .gate{
   display:grid; place-items:center; position:fixed; inset:0; z-index:100; width:100%; padding:0; border:0;
   background:none; color:var(--gate-ink); font:inherit; cursor:pointer; overflow:hidden; -webkit-tap-highlight-color:transparent;
 }
-.door{ position:absolute; inset-block:0; width:50.2%; background:var(--bg) var(--pattern) center/var(--pattern-size); transition:transform 1.25s cubic-bezier(.76,0,.24,1); }
+.door{ position:absolute; inset-block:0; width:calc(50% + .5px); overflow:hidden; transition:transform 1.25s cubic-bezier(.76,0,.24,1); }
+/* the seam runs down the pattern's own mirror line and the right door is the left one flipped, so the two halves match */
+.door::before{ content:""; position:absolute; inset:0; background:var(--bg) var(--pattern) right calc(var(--pattern-size)*-0.6309) center/var(--pattern-size); }
+.door--r::before{ transform:scaleX(-1); }
 .door::after{ content:""; position:absolute; inset:0; background:var(--gate-wash); }
 .door--l{ left:0; box-shadow:inset -1px 0 0 var(--gate-line); } .door--r{ right:0; box-shadow:inset 1px 0 0 var(--gate-line); }
 .gate__in{ position:relative; display:grid; justify-items:center; gap:.5rem; padding:1.5rem; transition:opacity .4s ease,transform .7s var(--ease-out); }
