@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hana &amp; Aly — 21 November 2026 — Mohamed Ali Palace, Cairo</title>
 <meta name="description" content="Together with their families, Hana and Aly invite you to celebrate their wedding under the pergola of Mohamed Ali Palace, Manial, Cairo.">
-<meta name="theme-color" content="#0B0D0D">
+<link rel="icon" href="assets/logo-on-olive.svg" type="image/svg+xml">
+<meta name="theme-color" content="#23210F">
 
 <!-- Link preview (WhatsApp / iMessage / Facebook / Slack).
      If WhatsApp shows the link without a photo, change og:image to the full
@@ -32,21 +33,21 @@
 
 :root{
   /* --- surfaces --- */
-  --void:      #0A0C0C;
-  --night:     #101413;
-  --night-2:   #161C1B;
-  --teal-abyss:#0B1F20;
+  --void:      #23210F;
+  --night:     #2D2A14;
+  --night-2:   #38351E;
+  --olive-abyss:#1B1A0B;
 
   /* --- ink --- */
-  --cream:     #EFE7DA;
-  --cream-dim: rgba(239,231,218,.62);
-  --cream-faint:rgba(239,231,218,.34);
+  --cream:     #F6EADB;
+  --cream-dim: rgba(246,234,219,.62);
+  --cream-faint:rgba(246,234,219,.66);
 
   /* --- accents --- */
-  --gold:      #C6A159;
-  --gold-lite: #E6CE99;
-  --gold-deep: #8F6E32;
-  --ember:     #C97B5E;
+  --gold:      #D9A877;
+  --gold-lite: #F0D2B4;
+  --gold-deep: #A4632F;
+  --ember:     #C96A3E;
 
   /* --- type --- */
   --display: 'Italiana', 'Cormorant Garamond', serif;
@@ -145,35 +146,25 @@ section{ position:relative; }
   padding:clamp(5rem,12vh,8rem) var(--gutter) clamp(5rem,10vh,7rem);
   overflow:hidden;
 }
-.hero__bg{ position:absolute; inset:0; z-index:-2; overflow:hidden; }
-.hero__bg img{
-  width:100%; height:118%; object-fit:cover; object-position:50% 42%;
-  filter:brightness(.66) contrast(1.1) saturate(.68) sepia(.22);
-  will-change:transform;
-  animation:slowZoom 26s var(--ease-soft) infinite alternate;
-}
-@keyframes slowZoom{ from{ scale:1 } to{ scale:1.09 } }
-.hero__bg::after{
-  content:""; position:absolute; inset:0;
-  background:
-    radial-gradient(88% 62% at 50% 46%, rgba(198,161,89,.18) 0%, rgba(198,161,89,0) 62%),
-    linear-gradient(to bottom, rgba(10,12,12,.7) 0%, rgba(10,12,12,.22) 36%, rgba(10,12,12,.55) 76%, var(--void) 100%);
+.hero::before{
+  content:""; position:absolute; inset:0; z-index:-2;
+  background:radial-gradient(80% 66% at 50% 42%, #4A4628 0%, #2D2A14 58%, #23210F 100%);
 }
 
 .hero__inner{ position:relative; text-align:center; max-width:52rem; }
 
 .hero__kicker{
-  font-family:var(--sans); font-weight:200;
+  font-family:var(--sans); font-weight:300;
   font-size:clamp(.6rem,.28vw + .54rem,.74rem);
   letter-spacing:.62em; text-transform:uppercase;
-  color:var(--gold); margin-left:.62em;
+  color:var(--gold-lite); margin-left:.62em;
 }
 
 /* the names, set as one enormous display line */
 .names{
-  margin-top:clamp(1.4rem,4vh,2.6rem);
+  margin-top:clamp(.7rem,2vh,1.2rem);
   font-family:var(--display); font-weight:400;
-  font-size:clamp(3.1rem,13.5vw,10rem);
+  font-size:clamp(2.4rem,min(9vw,7svh),4.4rem);
   line-height:.98; letter-spacing:.06em; text-transform:uppercase;
   display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
   gap:0 clamp(.6rem,2.4vw,1.6rem);
@@ -189,15 +180,16 @@ section{ position:relative; }
   display:inline-block; transform:translateY(105%);
   animation:unmask 1.5s var(--ease-out) forwards;
 }
+.mask > span.gold-text{ animation:unmask 1.5s var(--ease-out) forwards, sheen 9s linear infinite; }
 @keyframes unmask{ to{ transform:none } }
 
 .hero__rule{ margin-top:clamp(1.6rem,4vh,2.6rem); }
 .hero__sub{
   margin-top:clamp(1.4rem,3.6vh,2.2rem);
-  font-family:var(--sans); font-weight:200;
+  font-family:var(--sans); font-weight:300;
   font-size:clamp(.62rem,.28vw + .56rem,.76rem);
   letter-spacing:.44em; text-transform:uppercase;
-  color:var(--cream-dim); margin-left:.44em;
+  color:var(--cream); margin-left:.44em;
 }
 .hero__date{
   margin-top:clamp(1.1rem,3vh,1.8rem);
@@ -213,15 +205,41 @@ section{ position:relative; }
 .d4{animation-delay:1.32s}.d5{animation-delay:1.5s}
 
 .cue{
-  position:absolute; left:50%; bottom:clamp(1.4rem,4vh,2.6rem); translate:-50% 0; z-index:3;
-  display:grid; justify-items:center; gap:.8rem;
+  position:absolute; left:50%; bottom:clamp(.6rem,1.6svh,1.2rem); translate:-50% 0; z-index:3;
+  display:grid; justify-items:center; gap:.4rem;
   font-family:var(--sans); font-weight:200; font-size:.58rem;
   letter-spacing:.4em; text-transform:uppercase; color:var(--cream-faint);
   opacity:0; animation:rise 1.2s var(--ease-out) 2s forwards;
 }
-.cue__line{ width:1px; height:clamp(2.4rem,7vh,4rem); background:linear-gradient(var(--gold),transparent); position:relative; overflow:hidden; }
+.cue__line{ width:1px; height:clamp(1.4rem,3.6svh,2.2rem); background:linear-gradient(var(--gold),transparent); position:relative; overflow:hidden; }
 .cue__line::after{ content:""; position:absolute; inset-inline:0; height:38%; background:var(--gold-lite); animation:cueRun 2.3s var(--ease-soft) infinite; }
 @keyframes cueRun{ 0%{transform:translateY(-100%)} 60%,100%{transform:translateY(270%)} }
+
+/* --- logo: the hero's centrepiece. `scale`/`translate` carry the scroll effect, `transform` the entrance --- */
+.logo{
+  display:block; margin-inline:auto; height:auto;
+  width:min(70vw,42svh,28rem);
+  translate:0 calc(var(--part,0)*-7svh); scale:calc(1 - var(--part,0)*.14);
+  animation:logoIn 1.9s var(--ease-out) .15s both;
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,.4));
+}
+@keyframes logoIn{ from{ opacity:0; transform:translateY(22px) scale(.93); } to{ opacity:1; transform:none; } }
+
+/* --- botanical sprays from the logo's leaves: they open away as you scroll --- */
+.spray{
+  --sx:1; --sy:1; --l1:#A4421E; --l2:#C96A3E; --l3:#E8BA98; --l4:#5C5B36; --foil:#D9A877;
+  position:absolute; z-index:-1; pointer-events:none; overflow:visible;
+  width:min(34vw,18rem); aspect-ratio:1; transform-origin:50% 50%;
+  transform:scale(var(--sx),var(--sy)) translate(calc(var(--part,0)*-16%),calc(var(--part,0)*-16%)) rotate(calc(var(--part,0)*-10deg));
+  animation:sprayIn 2.1s var(--ease-out) .35s both;
+}
+.spray--tl{ top:0; left:0; }
+.spray--tr{ top:0; right:0; --sx:-1; }
+.spray--bl{ bottom:0; left:0; --sy:-1; }
+.spray--br{ bottom:0; right:0; --sx:-1; --sy:-1; }
+/* short phones: keep the leaves clear of the hero text */
+@media (max-height:700px){ .spray{ width:min(22vw,18rem); } }
+@keyframes sprayIn{ from{ opacity:0; rotate:-16deg; scale:.72; } to{ opacity:1; rotate:0deg; scale:1; } }
 
 #dust{ position:fixed; inset:0; pointer-events:none; z-index:2; }
 
@@ -264,15 +282,6 @@ section{ position:relative; }
   position:relative; overflow:hidden; text-align:center;
   background:var(--night);
 }
-.countdown__bg{ position:absolute; inset:0; z-index:0; }
-.countdown__bg img{
-  width:100%; height:100%; object-fit:cover;
-  filter:brightness(.44) saturate(.55) sepia(.35) blur(2px);
-}
-.countdown__bg::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(var(--void),rgba(16,20,19,.82) 30%,rgba(16,20,19,.82) 70%,var(--void));
-}
 .countdown .wrap{ position:relative; z-index:1; }
 
 .countdown__grid{
@@ -283,7 +292,7 @@ section{ position:relative; }
 .tick{ position:relative; }
 .tick + .tick::before{
   content:""; position:absolute; left:calc(-1 * clamp(.2rem,1vw,.8rem)); top:16%; bottom:26%;
-  width:1px; background:linear-gradient(transparent,rgba(198,161,89,.45),transparent);
+  width:1px; background:linear-gradient(transparent,rgba(217,168,119,.45),transparent);
 }
 .tick__n{
   display:block;
@@ -312,12 +321,12 @@ section{ position:relative; }
 .split__media{ position:relative; overflow:hidden; min-height:clamp(20rem,58vw,42rem); }
 .split__media img{
   position:absolute; inset:0; width:100%; height:112%; object-fit:cover;
-  filter:brightness(.6) contrast(1.08) saturate(.55) sepia(.34);
+  filter:brightness(.74) contrast(1.05) saturate(.72) sepia(.34);
   will-change:transform;
 }
 .split__media::after{
   content:""; position:absolute; inset:0;
-  background:linear-gradient(to right, rgba(10,12,12,.55), rgba(10,12,12,0) 45%, rgba(10,12,12,.65));
+  background:linear-gradient(to right, rgba(35,33,15,.55), rgba(35,33,15,0) 45%, rgba(35,33,15,.65));
 }
 .split__body{
   display:grid; align-content:center;
@@ -330,9 +339,9 @@ section{ position:relative; }
 .meta-row{
   display:grid; grid-template-columns:auto 1fr; gap:.9rem 1.4rem; align-items:start;
   padding-block:1.15rem;
-  border-bottom:1px solid rgba(239,231,218,.09);
+  border-bottom:1px solid rgba(246,234,219,.09);
 }
-.meta-row:first-child{ border-top:1px solid rgba(239,231,218,.09); }
+.meta-row:first-child{ border-top:1px solid rgba(246,234,219,.09); }
 .meta-row dt{
   font-family:var(--sans); font-weight:300; font-size:.63rem;
   letter-spacing:.34em; text-transform:uppercase; color:var(--gold);
@@ -358,7 +367,7 @@ section{ position:relative; }
   background:linear-gradient(100deg,var(--gold-deep),var(--gold-lite));
   transform:scaleX(0); transform-origin:left; transition:transform .55s var(--ease-out);
 }
-.btn:hover{ color:#0B0D0D; border-color:var(--gold-lite); }
+.btn:hover{ color:#23210F; border-color:var(--gold-lite); }
 .btn:hover::before{ transform:scaleX(1); }
 .btn:focus-visible{ outline:2px solid var(--ember); outline-offset:4px; }
 
@@ -371,10 +380,10 @@ section{ position:relative; }
   display:grid; gap:.4rem 2.4rem;
   grid-template-columns:1fr;
   padding-block:clamp(1.6rem,3.6vw,2.4rem);
-  border-top:1px solid rgba(239,231,218,.09);
+  border-top:1px solid rgba(246,234,219,.09);
   position:relative;
 }
-.event:last-child{ border-bottom:1px solid rgba(239,231,218,.09); }
+.event:last-child{ border-bottom:1px solid rgba(246,234,219,.09); }
 @media (min-width:48rem){
   .event{ grid-template-columns:9rem 1fr; align-items:baseline; }
 }
@@ -415,23 +424,15 @@ section{ position:relative; }
 /* ============================================================
    RSVP
    ============================================================ */
-.rsvp{ position:relative; overflow:hidden; background:var(--teal-abyss); }
-.rsvp__bg{ position:absolute; inset:0; z-index:0; }
-.rsvp__bg img{ width:100%; height:100%; object-fit:cover; filter:brightness(.38) saturate(.6) sepia(.26); }
-.rsvp__bg::after{
-  content:""; position:absolute; inset:0;
-  background:
-    radial-gradient(70% 55% at 50% 42%, rgba(198,161,89,.14), transparent 68%),
-    linear-gradient(var(--void), rgba(11,31,32,.88) 26%, rgba(11,31,32,.88) 74%, var(--void));
-}
+.rsvp{ position:relative; overflow:hidden; background:var(--olive-abyss); }
 .rsvp .wrap{ position:relative; z-index:1; }
 
 .card{
   position:relative;
   width:min(100%,46rem); margin-inline:auto; margin-top:clamp(2.4rem,6vw,3.6rem);
   padding:clamp(1.75rem,5vw,3.4rem);
-  background:rgba(239,231,218,.035);
-  border:1px solid rgba(198,161,89,.26);
+  background:rgba(246,234,219,.035);
+  border:1px solid rgba(217,168,119,.26);
   backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
 }
 /* corner ticks — a small piece of luxury detailing */
@@ -442,6 +443,7 @@ section{ position:relative; }
 .card::before{ top:-1px; left:-1px; border-right:0; border-bottom:0; }
 .card::after{ bottom:-1px; right:-1px; border-left:0; border-top:0; }
 
+.card__logo{ display:block; width:clamp(6rem,24vw,8rem); height:auto; margin:0 auto clamp(1.2rem,3vw,1.8rem); }
 .form{ display:grid; gap:clamp(1.2rem,3vw,1.7rem); }
 .row{ display:grid; gap:inherit; grid-template-columns:1fr; }
 @media (min-width:38rem){ .row--2{ grid-template-columns:1fr 1fr; } }
@@ -453,7 +455,7 @@ section{ position:relative; }
 }
 .field input,.field select,.field textarea{
   width:100%; padding:1em 0 .85em;
-  background:transparent; border:0; border-bottom:1px solid rgba(198,161,89,.3);
+  background:transparent; border:0; border-bottom:1px solid rgba(217,168,119,.3);
   color:var(--cream); font-family:var(--serif); font-weight:300; font-size:1.05rem;
   border-radius:0;
   transition:border-color .4s var(--ease-out);
@@ -461,19 +463,19 @@ section{ position:relative; }
 .field textarea{ min-height:6rem; resize:vertical; }
 .field select{
   appearance:none; cursor:pointer; padding-right:2rem;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C6A159' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23D9A877' stroke-width='1.5'/%3E%3C/svg%3E");
   background-repeat:no-repeat; background-position:right .2em center;
 }
-.field select option{ background:#0B1F20; color:var(--cream); }
-.field input::placeholder,.field textarea::placeholder{ color:rgba(239,231,218,.26); }
+.field select option{ background:#1B1A0B; color:var(--cream); }
+.field input::placeholder,.field textarea::placeholder{ color:rgba(246,234,219,.58); }
 .field input:focus,.field select:focus,.field textarea:focus{ outline:none; border-bottom-color:var(--gold-lite); }
 
 .seg{ display:grid; grid-template-columns:1fr 1fr; gap:.7rem; }
-.seg input{ position:absolute; opacity:0; pointer-events:none; }
+.seg input{ position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
 .seg label{
   display:flex; align-items:center; justify-content:center;
   padding:1.05em .8em; cursor:pointer; text-align:center;
-  border:1px solid rgba(198,161,89,.28);
+  border:1px solid rgba(217,168,119,.28);
   font-family:var(--sans); font-weight:300; font-size:.68rem;
   letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim);
   transition:all .4s var(--ease-out);
@@ -481,7 +483,7 @@ section{ position:relative; }
 .seg label:hover{ border-color:var(--gold); color:var(--cream); }
 .seg input:checked + label{
   background:linear-gradient(100deg,var(--gold-deep),var(--gold));
-  border-color:transparent; color:#0B0D0D; font-weight:400;
+  border-color:transparent; color:#23210F; font-weight:400;
 }
 .seg input:focus-visible + label{ outline:2px solid var(--gold-lite); outline-offset:3px; }
 
@@ -492,8 +494,8 @@ section{ position:relative; }
   display:none; position:relative; z-index:1; text-align:center;
   width:min(100%,42rem); margin-inline:auto; margin-top:clamp(2.4rem,6vw,3.6rem);
   padding:clamp(2.4rem,6vw,4rem);
-  border:1px solid rgba(198,161,89,.3);
-  background:rgba(239,231,218,.035);
+  border:1px solid rgba(217,168,119,.3);
+  background:rgba(246,234,219,.035);
   animation:rise 1s var(--ease-out) forwards;
 }
 .sent.show{ display:block; }
@@ -504,7 +506,7 @@ section{ position:relative; }
    FOOTER
    ============================================================ */
 .footer{ text-align:center; padding-block:clamp(4rem,9vw,7rem); background:var(--void); }
-.footer__names{
+.footer__logo{ display:block; width:clamp(9rem,30vw,13rem); height:auto; margin-inline:auto; }
   font-family:var(--display); font-weight:400;
   font-size:clamp(2rem,6.5vw,4rem); letter-spacing:.16em; text-transform:uppercase;
 }
@@ -512,20 +514,19 @@ section{ position:relative; }
   margin-top:1.8rem; font-family:var(--sans); font-weight:200; font-size:.63rem;
   letter-spacing:.44em; text-transform:uppercase; color:var(--cream-faint); margin-left:.44em;
 }
-.footer__credit{ margin-top:2.6rem; font-size:.78rem; font-style:italic; color:var(--cream-faint); }
-.footer__credit a{ color:var(--gold); text-underline-offset:3px; }
 
 /* ============================================================
    ACCESSIBILITY
    ============================================================ */
 .skip{
   position:absolute; left:-9999px; top:0; z-index:100;
-  background:var(--gold); color:#0B0D0D; padding:.9em 1.4em;
+  background:var(--gold); color:#23210F; padding:.9em 1.4em;
   font-family:var(--sans); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
 }
 .skip:focus{ left:.5rem; top:.5rem; }
 
 @media (prefers-reduced-motion:reduce){
+  .logo,.spray{ animation:none !important; }
   *,*::before,*::after{
     animation-duration:.001ms !important; animation-iteration-count:1 !important;
     transition-duration:.001ms !important; scroll-behavior:auto !important;
@@ -539,6 +540,7 @@ section{ position:relative; }
 </head>
 
 <body>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><symbol id="spray" viewBox="0 0 600 600" overflow="visible"><g transform="rotate(4) translate(30 0)"><path fill="var(--l2)" stroke="var(--foil)" stroke-width="2.6" stroke-linejoin="round" d="M0 0C60 -71 198 -87 300 26C216 -7 102 45 0 0Z"/><path fill="none" stroke="var(--foil)" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round" d="M15 -1C90 -22 192 -31 279 16"/></g><g transform="rotate(22) translate(30 0)"><path fill="var(--l1)" stroke="var(--foil)" stroke-width="2.6" stroke-linejoin="round" d="M0 0C88 -97 290 -118 440 35C317 -10 150 60 0 0Z"/><path fill="none" stroke="var(--foil)" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round" d="M22 -2C132 -30 282 -42 409 22"/></g><g transform="rotate(43) translate(30 0)"><path fill="var(--l3)" stroke="var(--foil)" stroke-width="2.6" stroke-linejoin="round" d="M0 0C100 -106 330 -129 500 39C360 -11 170 66 0 0Z"/><path fill="none" stroke="var(--foil)" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round" d="M25 -2C150 -33 320 -46 465 24"/></g><g transform="rotate(63) translate(30 0)"><path fill="var(--l4)" stroke="var(--foil)" stroke-width="2.6" stroke-linejoin="round" d="M0 0C84 -92 277 -112 420 34C302 -10 143 58 0 0Z"/><path fill="none" stroke="var(--foil)" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round" d="M21 -2C126 -29 269 -40 391 21"/></g><g transform="rotate(82) translate(30 0)"><path fill="var(--l2)" stroke="var(--foil)" stroke-width="2.6" stroke-linejoin="round" d="M0 0C62 -74 205 -90 310 27C223 -8 105 46 0 0Z"/><path fill="none" stroke="var(--foil)" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round" d="M16 -1C93 -23 198 -32 288 17"/></g></symbol></defs></svg>
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
@@ -548,12 +550,15 @@ section{ position:relative; }
 
   <!-- ══════════════════════ HERO ══════════════════════ -->
   <header class="hero">
-    <div class="hero__bg" aria-hidden="true">
-      <img id="heroImg" src="assets/arcade.jpg" alt="">
-    </div>
+
+    <svg class="spray spray--tl" aria-hidden="true" focusable="false"><use href="#spray"/></svg>
+    <svg class="spray spray--tr" aria-hidden="true" focusable="false"><use href="#spray"/></svg>
+    <svg class="spray spray--bl" aria-hidden="true" focusable="false"><use href="#spray"/></svg>
+    <svg class="spray spray--br" aria-hidden="true" focusable="false"><use href="#spray"/></svg>
 
     <div class="hero__inner">
       <p class="hero__kicker rise d1">Together with their families</p>
+      <img class="logo" src="assets/logo-on-olive.svg" width="2360" height="2176" alt="">
 
       <h1 class="names">
         <span class="mask"><span class="gold-text" style="animation-delay:.55s,0s">Hana</span></span>
@@ -602,7 +607,6 @@ section{ position:relative; }
 
   <!-- ══════════════════════ COUNTDOWN ══════════════════════ -->
   <section class="section-pad countdown" aria-labelledby="cd-h">
-    <div class="countdown__bg" aria-hidden="true"><img src="assets/mosque.jpg" alt=""></div>
     <div class="wrap">
       <p class="eyebrow reveal">Counting down</p>
       <h2 class="section-title reveal" id="cd-h" style="--i:1;margin-top:1.1rem">Until we say I do</h2>
@@ -705,9 +709,8 @@ section{ position:relative; }
     </div>
   </section>
 
-  <!-- ══════════════════════ RSVP ══════════════════════ -->
+  <!-- ═══════════ RSVP ══════════════════════ -->
   <section class="section-pad rsvp" id="rsvp" aria-labelledby="rsvp-h">
-    <div class="rsvp__bg" aria-hidden="true"><img src="assets/tilework.jpg" alt=""></div>
 
     <div class="wrap" style="text-align:center">
       <p class="eyebrow reveal">Kindly reply</p>
@@ -717,6 +720,7 @@ section{ position:relative; }
 
     <div class="wrap">
       <div class="card reveal" style="--i:3" id="rsvpCard">
+        <img class="card__logo" src="assets/logo-on-olive.svg" width="2360" height="2176" alt="">
         <form class="form" id="rsvpForm" novalidate>
           <div class="field">
             <label for="f-name">Full name</label>
@@ -787,12 +791,8 @@ section{ position:relative; }
   <footer class="footer">
     <div class="wrap">
       <div style="margin-bottom:clamp(2rem,5vw,3rem)" aria-hidden="true"><span class="rule"><i></i></span></div>
-      <p class="footer__names gold-text">Hana &amp; Aly</p>
+      <img class="footer__logo" src="assets/logo-on-olive.svg" width="2360" height="2176" alt="Hana and Aly monogram">
       <p class="footer__meta">21 . 11 . 2026 &nbsp;&middot;&nbsp; Cairo</p>
-      <p class="footer__credit">
-        Palace photographs courtesy of
-        <a href="https://commons.wikimedia.org" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>.
-      </p>
     </div>
   </footer>
 </main>
@@ -846,7 +846,7 @@ section{ position:relative; }
 
   /* ---------- 3. Scroll-linked: progress + parallax ---------- */
   const progress = document.getElementById('progress');
-  const heroImg  = document.getElementById('heroImg');
+  const hero = document.querySelector('.hero');
   const venueImg = document.getElementById('venueImg');
   const venueFig = venueImg && venueImg.closest('.split__media');
   let queued = false;
@@ -859,11 +859,13 @@ section{ position:relative; }
       const y = scrollY;
       const max = document.documentElement.scrollHeight - innerHeight;
       progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+
+      /* the sprays open and the logo eases back as you leave the hero */
+      if (!reduced) {
+        hero.style.setProperty('--part', Math.min(y / innerHeight, 1).toFixed(3));
+      }
       if (reduced) return;
 
-      if (y < innerHeight * 1.3) {
-        heroImg.style.transform = `translate3d(0, ${y * 0.24}px, 0)`;
-      }
       if (venueFig) {
         const r = venueFig.getBoundingClientRect();
         if (r.bottom > 0 && r.top < innerHeight) {
@@ -944,7 +946,7 @@ section{ position:relative; }
         m.y += m.vy; m.x += m.vx + Math.sin(m.y / 130) * 0.16; m.tw += m.tv;
         if (m.y + m.r < 0) { Object.assign(m, seed(), { y: innerHeight + 10 }); }
         ctx.globalAlpha = m.o * (0.45 + 0.55 * Math.sin(m.tw) ** 2);
-        ctx.fillStyle = '#E6CE99';
+        ctx.fillStyle = '#F0D2B4';
         ctx.beginPath();
         ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
         ctx.fill();

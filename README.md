@@ -9,11 +9,15 @@ open /Users/alybarakat/Desktop/hana-aly-wedding/index.html
 | File | What it is |
 |---|---|
 | `index.html` | Chooser page — links to all four variants |
-| `romantic.html` | **A — Romantic Cairo, full.** Ivory paper, gold script, peonies, moorish ogee arch |
+| `romantic.html` | **A — Romantic Cairo, full.** Rustic orange, the H&A monogram, botanical leaves, foil-line arch |
 | `romantic-short.html` | **A — Romantic, condensed.** Hero, invitation, countdown, 3-field RSVP |
-| `luxe.html` | **B — Cinematic Dark Luxe, full.** Night at the palace, gold dust, display capitals |
+| `luxe.html` | **B — Cinematic Dark Luxe, full.** Deep olive, the H&A monogram, gold dust, display capitals |
 | `luxe-short.html` | **B — Dark Luxe, condensed.** Hero, invitation, countdown, 3-field RSVP |
-| `assets/` | Photography and botanical plates |
+| `garden-light.html` | **Light garden, full.** Watercolour pergola, palace toile, artwork instead of photos |
+| `garden-light-short.html` | **Light garden, condensed.** Hero, invitation, countdown, 3-field RSVP |
+| `garden-orange.html` | **Orange garden, full.** Palace arches, rust damask, artwork instead of photos |
+| `garden-orange-short.html` | **Orange garden, condensed.** Hero, invitation, countdown, 3-field RSVP |
+| `assets/` | Logos and artwork (`assets/art/`), plus older photos and plates |
 
 No build step, no dependencies, no framework. Each variant is one self-contained
 HTML file (CSS + JS inline). Drop the folder on Netlify, Vercel, GitHub Pages, or
@@ -57,6 +61,45 @@ absolute and currently point at the Netlify domain** — search all three HTML f
 for `lucent-tanuki-a0cc91.netlify.app` and replace it with the real domain when you
 move, or the preview image will break.
 
+## Theme
+
+The visual language is the H&A logo sheet. The planner's PDF is a colour and pattern
+reference only: no slide styling and no 3D renders appear on the site.
+
+| Name | Hex | Used for |
+|---|---|---|
+| Rustic orange | `#8C3214` / band `#7A2A10` | Romantic background (the centre-right logo tile) |
+| Deep olive | `#2D2A14` / `#23210F` | Dark Luxe background (the top-right logo tile) |
+| Peach beige | `#E8BA98` | Ornament, labels |
+| Bronze | `#A4632F` | Logo on cream, accents |
+| Cream | `#F6EADB` / card `#F3E8DA` | Text on dark grounds, the RSVP card in Romantic |
+
+Logo files: `assets/logo-on-rustic.svg`, `logo-on-olive.svg`, `logo-on-cream.svg`.
+They are vector traces of the 1536px logo sheet, with a few small leaves redrawn by
+hand. If the designer has the original vector, drop it in under the same names.
+
+Type: Cormorant Garamond and Jost in Romantic, Italiana added in Dark Luxe. The corner
+leaves are inline SVG drawn to match the monogram, and open as you scroll.
+
+## Garden versions
+
+`index.html` links only `garden-light-short.html` and `garden-orange-short.html`.
+They run: hero, invitation with the dance floor, countdown, venue with a Google Maps
+preview that opens the couple's Maps link, footer. RSVP is a bar fixed to the bottom of the screen (name, Attending /
+Attending with +1) that appears once scrolling starts. Replies go to the Google Sheet "Hana & Aly RSVPs" on aly.m.barakat@gmail.com through an Apps Script web app (`RSVP_URL` in each page). A repeat reply under the same name updates that row.
+
+The pages open on a closed-doors entrance: tapping parts the doors and starts the
+music, because browsers block sound until a tap. If nobody taps, the doors open after
+8 seconds without sound, and the music button (top right) still works.
+
+Music: `assets/audio/air-on-the-g-string.m4a`, J.S. Bach, Air, performed by the US Air
+Force Strings. Public domain, no credit required:
+https://commons.wikimedia.org/wiki/File:Air_-_Air_Force_Strings_-_United_States_Air_Force_Band.mp3
+
+All other pages remain in this folder but aren't linked from the landing page. The
+artwork is in `assets/art/` (`l-` light, `o-` orange); `dancefloor.webp` comes from
+the planner's PDF.
+
 ## Sections
 
 **Full variants:** hero + live countdown → invitation → countdown → venue &
@@ -71,10 +114,11 @@ cut to three fields — name, optional phone, and Attending / Attending with +1.
 
 ## Still to confirm
 
+- **RSVP deadline has passed.** The pages still say 15 October 2026, a placeholder. Replace it.
+
 These are placeholders — tell me the real values and I'll swap them in:
 
 - **Schedule times.** 5:00 arrive / 6:00 Katb El-Kitab / 7:00 zaffa / 8:00 dinner / 10:00 dancing.
-- **RSVP deadline** — currently 15 October 2026.
 - **Dress code** — "Garden formal" (A) / "Black tie optional" (B).
 - **The invitation artwork still reads "TWENTY TWENTY FOUR".** It is now the
   WhatsApp preview image on every page, so it is the first thing guests see.
@@ -104,22 +148,10 @@ Targets `2026-11-21T17:00:00+02:00` (Cairo, UTC+2 in November). Change the
 
 ## Image credits
 
-All photographs are of the actual venue — Mohamed Ali (Manial) Palace, Cairo —
-from [Wikimedia Commons](https://commons.wikimedia.org), used under their
-respective Creative Commons licences:
+- `marble.webp`: your own photo of the pergola, used in the full variants' venue section.
+- `invitation-share.jpg`: your painted invitation, still the link preview. It reads 2024
+  and uses the old colours.
 
-- `arcade.jpg`, `mosque.jpg` — *Prince Muhammad Ali Palace Manial Cairo* series
-- `garden-arcade.jpg`, `share.jpg` — *Jardins du Al-Manyal Palace Museum*
-- `fountain.jpg` — *The colors fountain* (the marble fountain in the palace garden)
-- `tilework.jpg` — *Mohamed Ali's Palace, Manial, Cairo Egypt*
-
-Botanical plates are public domain, from Pierre-Joseph Redouté's
-*Choix des plus belles fleurs* (1827):
-
-- `peony-blush.jpg` — Plate 39, *Pivoine de la Chine*
-- `peony-coral.jpg` — Plate 134, *Paeonia tenuifolia*
-- `campanula.jpg` — Plate 106, *Campanule dentelée*
-
-Before this goes public, check each file's licence page on Commons and add
-attribution where the licence requires it (most are CC BY-SA and need credit).
-The footer currently carries a general Wikimedia Commons credit.
+Nothing else in `assets/` apart from the logos is used by any page. That includes
+`entrance.webp`, `garden.webp` and the old Wikimedia and Redouté files, which can be
+deleted or brought back as you prefer.
