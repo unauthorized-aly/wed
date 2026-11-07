@@ -98,7 +98,7 @@ Phones: the orange frame is drawn to a canvas behind the closed doors, so only t
 
 The main page is `index.html` (orange). `garden-orange-short.html` forwards to it so earlier links keep working, the light version is `garden-light-short.html`, and the page comparing both is `choose.html`.
 
-Languages: English by default; add `?lang=ar` to a link for Arabic. There is no language button. The Arabic is light Egyptian, not formal. It lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
+Languages: English by default; add `?lang=ar` to a link for Arabic. There is no language button. The Arabic is formal, for older relatives. It lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
 
 Link preview: `assets/share-palace.jpg` (1200x630). The `og:` tags use full addresses for alylovehana.com/, so update them if the site moves.
 
