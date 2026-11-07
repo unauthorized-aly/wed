@@ -96,6 +96,10 @@ Music: `assets/audio/air-on-the-g-string.m4a`, J.S. Bach, Air, performed by the 
 Force Strings. Public domain, no credit required:
 https://commons.wikimedia.org/wiki/File:Air_-_Air_Force_Strings_-_United_States_Air_Force_Band.mp3
 
+Languages: English by default, Arabic from the corner button or `?lang=ar`; the choice is remembered. Arabic text lives in the `AR` table in each page's script, matched to `data-i18n` attributes. Sheet labels stay in English in both languages.
+
+Link preview: `assets/share-logo.jpg` (1200x630). The `og:` tags use full addresses for unauthorized-aly.github.io/wed/, so update them if the site moves.
+
 All other pages remain in this folder but aren't linked from the landing page. The
 artwork is in `assets/art/` (`l-` light, `o-` orange); `dancefloor.webp` comes from
 the planner's PDF.

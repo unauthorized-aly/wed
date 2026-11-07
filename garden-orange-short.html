@@ -4,21 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro','waiting')</script>
+<script>(function(){var l=new URLSearchParams(location.search).get('lang');try{l=l||localStorage.getItem('lang')}catch(e){}if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl'}})()</script>
 <title>Hana &amp; Aly — 21 November 2026 — Mohamed Ali Palace, Cairo</title>
 <meta name="description" content="Together with their families, Hana and Aly invite you to celebrate their wedding under the pergola of Mohamed Ali Palace, Manial, Cairo.">
 <meta name="theme-color" content="#912D06">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://unauthorized-aly.github.io/wed/garden-orange-short.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
 <meta property="og:title" content="Hana &amp; Aly — 21 November 2026">
 <meta property="og:description" content="Together with their families — under the pergola of Mohamed Ali Palace, Manial, Cairo.">
-<meta property="og:image" content="assets/invitation-share.jpg">
-<meta property="og:image:width" content="666">
-<meta property="og:image:height" content="1000">
+<meta property="og:image" content="https://unauthorized-aly.github.io/wed/assets/share-logo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="assets/invitation-share.jpg">
+<meta name="twitter:image" content="https://unauthorized-aly.github.io/wed/assets/share-logo.jpg">
 <link rel="icon" href="assets/logo-on-rustic.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Amiri:wght@400;700&family=Tajawal:wght@400;500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#912D06; --band:#7E2605; --ink:#F8ECDD; --soft:#F5E3D0; --accent:#F4D3B5; --accent2:#F6DDC6;
@@ -196,9 +200,31 @@ html.intro .gate{
 .gate.opening .gate__in{ opacity:0; transform:scale(1.08); }
 .gate:focus-visible{ outline:none; } .gate:focus-visible .gate__tap{ outline:2px solid currentColor; outline-offset:3px; }
 
+/* --- language switch and Arabic: letter-spacing breaks joined letters, so it goes, with italics and capitals --- */
+.lang{
+  position:absolute; z-index:110; top:calc(.7rem + env(safe-area-inset-top)); inset-inline-start:.7rem; height:2.75rem; padding:0 1.05rem;
+  border:1px solid rgba(140,50,20,.4); border-radius:999px; background:#FBF3E6; color:#8C3214; cursor:pointer;
+  font-family:'Amiri','Cormorant Garamond',Georgia,serif; font-size:1rem; line-height:1; box-shadow:0 6px 16px -6px rgba(40,12,2,.5);
+}
+html[lang=ar] .lang{ font-family:'Cormorant Garamond',Georgia,serif; font-size:1.05rem; }
+.lang:focus-visible{ outline:2px solid #8C3214; outline-offset:3px; }
+html[lang=ar]{ --serif:'Amiri',Georgia,serif; --sans:'Tajawal',system-ui,sans-serif; }
+html[lang=ar] body *{ letter-spacing:0 !important; font-style:normal !important; text-transform:none !important; }
+html[lang=ar] .section-title{ line-height:1.4; }
+html[lang=ar] .names,html[lang=ar] .gate__names{ line-height:1.35; }
+html[lang=ar] .accent{ line-height:1.5; }
+html[lang=ar] .eyebrow,html[lang=ar] .hero__sub,html[lang=ar] .tick__l,html[lang=ar] .gate__date,html[lang=ar] .footer__meta{ margin-left:0; font-size:.92rem; }
+html[lang=ar] .hero__kicker{ margin-inline:auto; font-size:.92rem; }
+html[lang=ar] .gate__tap,html[lang=ar] .map__cta,html[lang=ar] .reply .btn{ font-size:.86rem; }
+html[lang=ar] .seg label{ font-size:.78rem; }
+html[lang=ar] .meta dt{ font-size:.86rem; padding-top:.3em; }
+html[lang=ar] .reply__h{ font-size:1.25rem; font-weight:700; line-height:1.3; padding-top:.3rem; }
+@media (max-width:24rem){ html[lang=ar] .seg label{ font-size:.72rem; padding-inline:.15em; white-space:nowrap; } }
+html[lang=ar] .hero__date{ font-size:1.1rem; }
+
 /* --- music toggle --- */
 .sound{
-  position:fixed; z-index:60; top:calc(.7rem + env(safe-area-inset-top)); right:.7rem; width:2.75rem; height:2.75rem; display:grid; place-items:center;
+  position:fixed; z-index:60; top:calc(.7rem + env(safe-area-inset-top)); inset-inline-end:.7rem; width:2.75rem; height:2.75rem; display:grid; place-items:center;
   padding:0; border:1px solid rgba(140,50,20,.4); border-radius:50%; background:#FBF3E6; color:#8C3214; cursor:pointer; box-shadow:0 6px 16px -6px rgba(40,12,2,.5);
 }
 .sound svg{ width:1.2rem; height:1.2rem; }
@@ -253,7 +279,7 @@ html.intro .gate{
   .reply__h{ margin-top:.75rem; margin-bottom:.3rem; font-size:1.2rem; }
   .reply input[type=text],.seg label,.reply .btn{ height:2.4rem; }
 }
-.reply input.hp{ position:absolute; left:-9999px; width:1px; height:1px; }
+.reply input.hp{ position:absolute; inset-inline-start:-9999px; width:1px; height:1px; }
 .reply .btn:disabled{ opacity:.65; cursor:wait; transform:none; }
 .reply__err{ grid-column:1/-1; order:3; text-align:center; font-size:.95rem; line-height:1.2; color:#A4421E; }
 .reply__done{ position:relative; margin-top:.9rem; text-align:center; font-style:italic; line-height:1.35; color:#6E2A12; }
@@ -265,8 +291,8 @@ html.intro .gate{
 .footer__logo{ width:clamp(9rem,30vw,12.5rem); margin-inline:auto; }
 .footer__meta{ margin-top:1.2rem; font-family:var(--sans); font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:var(--soft); }
 
-.skip{ position:absolute; left:-9999px; top:0; z-index:100; background:#8C3214; color:#F6EADB; padding:.9em 1.4em; font-family:var(--sans); font-size:.74rem; }
-.skip:focus{ left:.5rem; top:.5rem; }
+.skip{ position:absolute; inset-inline-start:-9999px; top:0; z-index:100; background:#8C3214; color:#F6EADB; padding:.9em 1.4em; font-family:var(--sans); font-size:.74rem; }
+.skip:focus{ inset-inline-start:.5rem; top:.5rem; }
 
 /* the arched frame: landscape on screens, the tall rebuild on phones */
 .art{ inset:0; left:0; top:0; transform:none; width:100%; height:100%; }
@@ -292,16 +318,17 @@ html.intro .gate{
 </style>
 </head>
 <body>
-<button class="gate" id="gate" type="button" aria-label="Open the invitation">
+<button class="gate" id="gate" type="button" data-i18n-aria="gateAria" aria-label="Open the invitation">
   <span class="door door--l"></span><span class="door door--r"></span>
   <span class="gate__in">
     <img class="gate__logo" src="assets/logo-on-rustic.svg" width="2360" height="2176" alt="">
-    <span class="gate__names">Hana &amp; Aly</span>
-    <span class="gate__date">21 . 11 . 2026</span>
-    <span class="gate__tap">Tap to open</span>
+    <span class="gate__names" data-i18n="names">Hana &amp; Aly</span>
+    <span class="gate__date" data-i18n="dateDots">21 . 11 . 2026</span>
+    <span class="gate__tap" data-i18n="tap">Tap to open</span>
   </span>
 </button>
-<a class="skip" href="#main">Skip to content</a>
+<button class="lang" id="lang" type="button" lang="ar">العربية</button>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 <audio id="music" src="assets/audio/air-on-the-g-string.m4a" preload="none" loop></audio>
 <button class="sound" id="sound" type="button" aria-pressed="false" aria-label="Play music">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 3v12.5a3.5 3.5 0 1 1-2-3.16V7.3L9 9v9.5a3.5 3.5 0 1 1-2-3.16V6.5L19 3Z"/><line class="off" x1="3" y1="3" x2="21" y2="21"/></svg>
@@ -314,60 +341,60 @@ html.intro .gate{
     <div class="pin">
       <picture class="art"><source media="(max-aspect-ratio:1/1)" srcset="assets/art/o-frame-tall.webp"><img src="assets/art/o-frame.webp" width="1672" height="941" alt="" fetchpriority="high"></picture>
       <div class="hero__inner">
-        <p class="hero__kicker rise d1">Together with their families</p>
+        <p class="hero__kicker rise d1" data-i18n="kicker">Together with their families</p>
         <img class="logo" src="assets/logo-on-rustic.svg" width="2360" height="2176" alt="">
-        <h1 class="names rise d2">Hana &amp; Aly</h1>
-        <p class="hero__sub rise d2">Are tying the knot</p>
+        <h1 class="names rise d2" data-i18n="names">Hana &amp; Aly</h1>
+        <p class="hero__sub rise d2" data-i18n="sub">Are tying the knot</p>
         <img class="orn rise d3" src="assets/art/o-orn-b.webp" alt="" style="margin-block:.35rem;width:1.5rem">
-        <p class="hero__date rise d3"><span>21 November</span><span>2026</span></p>
-        <p class="hero__venue rise d4">Mohamed Ali Palace &middot; Manial, Cairo</p>
+        <p class="hero__date rise d3"><span data-i18n="date1">21 November</span><span data-i18n="year">2026</span></p>
+        <p class="hero__venue rise d4" data-i18n="venueLine">Mohamed Ali Palace &middot; Manial, Cairo</p>
       </div>
-      <div class="cue" aria-hidden="true"><span class="cue__line"></span><span>Scroll</span></div>
+      <div class="cue" aria-hidden="true"><span class="cue__line"></span><span data-i18n="scroll">Scroll</span></div>
     </div>
   </header>
 
   <section class="section-pad invite center" aria-labelledby="invite-h">
     <img class="deco deco--tl reveal reveal--l" src="assets/art/o-swirl.webp" width="640" height="400" loading="lazy" alt="" aria-hidden="true"><img class="deco deco--br reveal reveal--r" src="assets/art/o-lily.webp" width="697" height="385" loading="lazy" alt="" aria-hidden="true">
     <div class="wrap">
-      <figure class="floor"><img id="floor" src="assets/art/dancefloor.webp" width="1000" height="1000" loading="lazy" alt="The dance floor design, a rustic orange, peach and olive medallion with the H and A monogram at its centre."></figure>
-      <p class="eyebrow reveal">You are invited</p>
-      <h2 class="section-title reveal" id="invite-h" style="--i:1;margin-top:.6rem">Celebrate the beginning<br>of our forever</h2>
+      <figure class="floor"><img id="floor" data-i18n-alt="floorAlt" src="assets/art/dancefloor.webp" width="1000" height="1000" loading="lazy" alt="The dance floor design, a rustic orange, peach and olive medallion with the H and A monogram at its centre."></figure>
+      <p class="eyebrow reveal" data-i18n="invited">You are invited</p>
+      <h2 class="section-title reveal" id="invite-h" style="--i:1;margin-top:.6rem" data-i18n="inviteH">Celebrate the beginning<br>of our forever</h2>
       <img class="orn reveal" src="assets/art/o-orn-a.webp" width="135" height="195" loading="lazy" alt="" style="margin-block:1.2rem;--i:2">
       <div class="invite__body">
-        <p class="lede reveal" style="--i:3">We&rsquo;re thrilled to invite you to join us under the pergola of the Mohamed Ali Palace &mdash; for one evening of good vibes, happy hearts, and a whole lot of love.</p>
-        <p class="reveal" style="--i:4">Your presence means the world to us.<span class="accent">See you there.</span></p>
+        <p class="lede reveal" style="--i:3" data-i18n="inviteLede">We&rsquo;re thrilled to invite you to join us under the pergola of the Mohamed Ali Palace &mdash; for one evening of good vibes, happy hearts, and a whole lot of love.</p>
+        <p class="reveal" style="--i:4" data-i18n="presence">Your presence means the world to us.<span class="accent">See you there.</span></p>
       </div>
-      <p class="tail reveal" style="--i:5">We can&rsquo;t wait to party with you</p>
+      <p class="tail reveal" style="--i:5" data-i18n="tail">We can&rsquo;t wait to party with you</p>
     </div>
   </section>
 
   <section class="section-pad pattern" aria-labelledby="count-title">
     <div class="wrap center">
       
-      <p class="eyebrow reveal">Counting down</p>
-      <h2 class="section-title reveal" id="count-title" style="--i:1;margin-top:.6rem">Until we say &ldquo;I do&rdquo;</h2>
+      <p class="eyebrow reveal" data-i18n="counting">Counting down</p>
+      <h2 class="section-title reveal" id="count-title" style="--i:1;margin-top:.6rem" data-i18n="countH">Until we say &ldquo;I do&rdquo;</h2>
       <div class="countdown__grid" role="timer" aria-live="off">
-        <div class="reveal" style="--i:1"><span class="tick__n" id="cd-d">--</span><span class="tick__l">Days</span></div>
-        <div class="reveal" style="--i:2"><span class="tick__n" id="cd-h">--</span><span class="tick__l">Hours</span></div>
-        <div class="reveal" style="--i:3"><span class="tick__n" id="cd-m">--</span><span class="tick__l">Minutes</span></div>
-        <div class="reveal" style="--i:4"><span class="tick__n" id="cd-s">--</span><span class="tick__l">Seconds</span></div>
+        <div class="reveal" style="--i:1"><span class="tick__n" id="cd-d">--</span><span class="tick__l" data-i18n="days">Days</span></div>
+        <div class="reveal" style="--i:2"><span class="tick__n" id="cd-h">--</span><span class="tick__l" data-i18n="hours">Hours</span></div>
+        <div class="reveal" style="--i:3"><span class="tick__n" id="cd-m">--</span><span class="tick__l" data-i18n="minutes">Minutes</span></div>
+        <div class="reveal" style="--i:4"><span class="tick__n" id="cd-s">--</span><span class="tick__l" data-i18n="seconds">Seconds</span></div>
       </div>
     </div>
   </section>
   <section class="section-pad" aria-labelledby="venue-h">
     <div class="wrap venue__grid">
-      <figure class="venue__art feather reveal reveal--l"><img src="assets/art/o-palace.webp" width="1672" height="941" loading="lazy" alt="Painting of Mohamed Ali Palace with a palm and cypress trees."></figure>
+      <figure class="venue__art feather reveal reveal--l"><img data-i18n-alt="venueAlt" src="assets/art/o-palace.webp" width="1672" height="941" loading="lazy" alt="Painting of Mohamed Ali Palace with a palm and cypress trees."></figure>
       <div>
-        <p class="eyebrow reveal reveal--r">The place</p>
-        <h2 class="section-title reveal reveal--r" id="venue-h" style="--i:1;margin-top:.6rem">Under the pergola of<br><em>Mohamed Ali Palace</em></h2>
+        <p class="eyebrow reveal reveal--r" data-i18n="place">The place</p>
+        <h2 class="section-title reveal reveal--r" id="venue-h" style="--i:1;margin-top:.6rem" data-i18n="venueH">Under the pergola of<br><em>Mohamed Ali Palace</em></h2>
         <dl class="meta">
-          <div class="reveal reveal--r" style="--i:2"><dt>Date</dt><dd><b>Saturday, 21 November 2026</b></dd></div>
-          <div class="reveal reveal--r" style="--i:3"><dt>Time</dt><dd><b>Starts at 5:00 PM sharp</b></dd></div>
-          <div class="reveal reveal--r" style="--i:4"><dt>Where</dt><dd><b>Manial Palace &amp; Museum</b><br>1 Al Saraya St, Al Manyal, Cairo, Egypt</dd></div>
+          <div class="reveal reveal--r" style="--i:2"><dt data-i18n="dtDate">Date</dt><dd data-i18n="ddDate"><b>Saturday, 21 November 2026</b></dd></div>
+          <div class="reveal reveal--r" style="--i:3"><dt data-i18n="dtTime">Time</dt><dd data-i18n="ddTime"><b>Starts at 5:00 PM sharp</b></dd></div>
+          <div class="reveal reveal--r" style="--i:4"><dt data-i18n="dtWhere">Where</dt><dd data-i18n="ddWhere"><b>Manial Palace &amp; Museum</b><br>1 Al Saraya St, Al Manyal, Cairo, Egypt</dd></div>
         </dl>
-        <a class="map reveal reveal--r" style="--i:5" href="https://maps.app.goo.gl/CEcDx6fh7PPifjwd8" target="_blank" rel="noopener noreferrer" aria-label="Open Prince Mohamed Ali Palace in Google Maps">
-          <iframe src="https://www.google.com/maps?q=Prince+Mohamed+Ali+Palace&amp;ll=30.027409,31.2277368&amp;z=16&amp;output=embed" title="Map showing Prince Mohamed Ali Palace" loading="lazy" tabindex="-1" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <span class="map__cta">Open in Google Maps</span>
+        <a class="map reveal reveal--r" data-i18n-aria="mapAria" style="--i:5" href="https://maps.app.goo.gl/CEcDx6fh7PPifjwd8" target="_blank" rel="noopener noreferrer" aria-label="Open Prince Mohamed Ali Palace in Google Maps">
+          <iframe data-i18n-title="mapTitle" src="https://www.google.com/maps?q=Prince+Mohamed+Ali+Palace&amp;ll=30.027409,31.2277368&amp;z=16&amp;output=embed" title="Map showing Prince Mohamed Ali Palace" loading="lazy" tabindex="-1" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <span class="map__cta" data-i18n="mapCta">Open in Google Maps</span>
         </a>
       </div>
     </div>
@@ -376,26 +403,26 @@ html.intro .gate{
   <footer class="footer">
     <div class="wrap">
       <img class="footer__logo" src="assets/logo-on-rustic.svg" width="2360" height="2176" loading="lazy" alt="Hana and Aly monogram">
-      <p class="footer__meta">21 . 11 . 2026 &nbsp;&middot;&nbsp; Cairo</p>
+      <p class="footer__meta" data-i18n="footer">21 . 11 . 2026 &nbsp;&middot;&nbsp; Cairo</p>
     </div>
   </footer>
 </main>
-<aside class="reply" id="reply" aria-label="RSVP">
+<aside class="reply" id="reply" data-i18n-aria="replyAria" aria-label="RSVP">
   <img class="reply__orn" src="assets/art/l-quatrefoil.webp" width="260" height="260" alt="">
   <img class="reply__sprig reply__sprig--l" src="assets/art/l-sprig-b.webp" width="350" height="370" alt="">
   <img class="reply__sprig reply__sprig--r" src="assets/art/l-jasmine.webp" width="410" height="380" alt="">
-  <h2 class="reply__h" id="replyH">Will we see you there?</h2>
+  <h2 class="reply__h" id="replyH" data-i18n="replyH">Will we see you there?</h2>
   <form id="rsvpForm" novalidate>
-    <label class="sr" for="f-name">Full name</label>
-    <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your full name" required>
+    <label class="sr" for="f-name" data-i18n="nameLabel">Full name</label>
+    <input id="f-name" data-i18n-ph="namePh" dir="auto" name="name" type="text" autocomplete="name" placeholder="Your full name" required>
     <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button class="btn" type="submit">Send reply</button>
-    <div class="seg" role="radiogroup" aria-label="Attending">
-      <input type="radio" id="f-solo" name="attending" value="solo" checked><label for="f-solo">Attending</label>
-      <input type="radio" id="f-plus" name="attending" value="plus-one"><label for="f-plus">Attending with +1</label>
-      <input type="radio" id="f-no" name="attending" value="no"><label for="f-no">Can&rsquo;t make it</label>
+    <button class="btn" type="submit" data-i18n="send">Send reply</button>
+    <div class="seg" role="radiogroup" data-i18n-aria="attGroup" aria-label="Attending">
+      <input type="radio" id="f-solo" name="attending" value="solo" checked><label for="f-solo" data-i18n="solo">Attending</label>
+      <input type="radio" id="f-plus" name="attending" value="plus-one"><label for="f-plus" data-i18n="plus">Attending with +1</label>
+      <input type="radio" id="f-no" name="attending" value="no"><label for="f-no" data-i18n="no">Can&rsquo;t make it</label>
     </div>
-    <p class="reply__err" id="sendErr" role="alert" hidden>That didn&rsquo;t send. Please check your connection and try again.</p>
+    <p class="reply__err" id="sendErr" role="alert" hidden data-i18n="sendErr">That didn&rsquo;t send. Please check your connection and try again.</p>
   </form>
   <p class="reply__done" id="sent" role="status" hidden></p>
 </aside>
@@ -404,6 +431,43 @@ html.intro .gate{
   'use strict';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const byId = id => document.getElementById(id);
+
+  /* languages: English is what's in the page, Arabic comes from this table. ?lang=ar opens it directly */
+  const AR = {"scroll": "مرّر", "title": "هنا وعلي — ٢١ نوفمبر ٢٠٢٦ — قصر الأمير محمد علي، القاهرة", "skip": "تخطَّ إلى المحتوى", "gateAria": "افتح الدعوة", "names": "هنا وعلي", "dateDots": "٢١ نوفمبر ٢٠٢٦", "tap": "اضغط للفتح", "kicker": "مع عائلتيهما", "sub": "يحتفلان بزفافهما", "date1": "٢١ نوفمبر", "year": "٢٠٢٦", "venueLine": "قصر الأمير محمد علي، المنيل، القاهرة", "invited": "أنتم مدعوون", "inviteH": "شاركونا<br>بداية العمر", "inviteLede": "يسعدنا أن ندعوكم لمشاركتنا تحت برجولا قصر الأمير محمد علي، في أمسية مليئة بالأجواء الجميلة والقلوب السعيدة والكثير من الحب.", "presence": "حضوركم يعني لنا الكثير.<span class=\"accent\">في انتظاركم.</span>", "tail": "نتطلع للاحتفال معكم", "counting": "العد التنازلي", "countH": "حتى يوم زفافنا", "days": "يوم", "hours": "ساعة", "minutes": "دقيقة", "seconds": "ثانية", "place": "المكان", "venueH": "تحت برجولا<br><em>قصر الأمير محمد علي</em>", "dtDate": "التاريخ", "ddDate": "<b>السبت، ٢١ نوفمبر ٢٠٢٦</b>", "dtTime": "الموعد", "ddTime": "<b>يبدأ الحفل في تمام الساعة ٥:٠٠ مساءً</b>", "dtWhere": "العنوان", "ddWhere": "<b>قصر الأمير محمد علي (قصر المنيل)</b><br>١ شارع السراي، المنيل، القاهرة، مصر", "mapAria": "افتح قصر الأمير محمد علي في خرائط جوجل", "mapCta": "افتح في خرائط جوجل", "mapTitle": "خريطة توضح موقع قصر الأمير محمد علي", "footer": "٢١ نوفمبر ٢٠٢٦ &nbsp;—&nbsp; القاهرة", "replyAria": "تأكيد الحضور", "replyH": "هل سنراكم هناك؟", "nameLabel": "الاسم بالكامل", "namePh": "اسمك بالكامل", "send": "إرسال الرد", "attGroup": "الحضور", "solo": "سأحضر", "plus": "سأحضر مع مرافق", "no": "أعتذر عن الحضور", "sendErr": "لم يتم الإرسال. يرجى التحقق من الاتصال والمحاولة مرة أخرى.", "floorAlt": "تصميم حلبة الرقص، ميدالية بألوان البرتقالي والخوخي والزيتوني يتوسطها الحرفان الأولان من اسمي العروسين.", "venueAlt": "لوحة فنية لقصر الأمير محمد علي"};
+  const EN = { title: document.title, send: 'Send reply', sending: 'Sending\u2026', play: 'Play music', pause: 'Pause music', switchTo: 'Switch to Arabic',
+    thanks: n => `Thank you, ${n}. We can\u2019t wait to celebrate with you.`, miss: n => `Thank you, ${n}. We\u2019ll miss you.` };
+  Object.assign(AR, { sending: 'جارٍ الإرسال\u2026', play: 'تشغيل الموسيقى', pause: 'إيقاف الموسيقى', switchTo: 'Switch to English',
+    thanks: n => `شكرًا لك يا ${n}. ننتظرك لنحتفل معًا.`, miss: n => `شكرًا لك يا ${n}. سنفتقدك.` });
+  let lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+  const t = k => (lang === 'ar' ? AR : EN)[k];
+  const digits = s => lang === 'ar' ? String(s).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]) : String(s);
+  const SLOTS = [['i18n', null], ['i18nAria', 'aria-label'], ['i18nPh', 'placeholder'], ['i18nAlt', 'alt'], ['i18nTitle', 'title']];
+  const original = new Map();
+  function applyLang() {
+    const root = document.documentElement;
+    root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr'; document.title = t('title');
+    for (const [slot, attr] of SLOTS) document.querySelectorAll(`[data-${slot.replace(/[A-Z]/g, c => '-' + c.toLowerCase())}]`).forEach(el => {
+      const id = slot + ':' + el.dataset[slot];
+      if (!original.has(el)) original.set(el, {});
+      const was = original.get(el);
+      if (!(slot in was)) was[slot] = attr ? el.getAttribute(attr) : el.innerHTML;
+      const text = lang === 'ar' ? AR[el.dataset[slot]] : was[slot];
+      if (attr) el.setAttribute(attr, text); else el.innerHTML = text;
+    });
+    const sw = byId('lang'); sw.textContent = lang === 'ar' ? 'English' : 'العربية'; sw.lang = lang === 'ar' ? 'en' : 'ar'; sw.setAttribute('aria-label', t('switchTo'));
+    const snd = byId('sound'); snd.setAttribute('aria-label', t(snd.classList.contains('playing') ? 'pause' : 'play'));
+    const map = document.querySelector('.map iframe'), src = map.getAttribute('src').replace(/&hl=ar$/, '') + (lang === 'ar' ? '&hl=ar' : '');
+    if (src !== map.getAttribute('src')) map.setAttribute('src', src);
+  }
+  applyLang();
+  byId('lang').addEventListener('click', () => {
+    lang = lang === 'ar' ? 'en' : 'ar';
+    try { localStorage.setItem('lang', lang); } catch (_) {}
+    try { const u = new URL(location); if (lang === 'ar') u.searchParams.set('lang', 'ar'); else u.searchParams.delete('lang'); history.replaceState(null, '', u); } catch (_) {}
+    applyLang();
+    Object.keys(last).forEach(k => delete last[k]); tick();
+    measure();
+  });
 
   /* reveal */
   const els = document.querySelectorAll('.reveal');
@@ -419,7 +483,7 @@ html.intro .gate{
   const pad = n => String(n).padStart(2, '0');
   function paint(k, v) {
     if (last[k] === v) return;
-    last[k] = v; cells[k].textContent = v;
+    last[k] = v; cells[k].textContent = digits(v);
     if (reduced) return;
     cells[k].classList.remove('flip'); void cells[k].offsetWidth; cells[k].classList.add('flip');
   }
@@ -467,7 +531,7 @@ html.intro .gate{
     }, 70);
   }
   function play() { wanted = true; audio.volume = 0; audio.play().then(() => fadeTo(.55)).catch(() => { wanted = false; }); }
-  function show(on) { sound.classList.toggle('playing', on); sound.setAttribute('aria-pressed', on); sound.setAttribute('aria-label', on ? 'Pause music' : 'Play music'); }
+  function show(on) { sound.classList.toggle('playing', on); sound.setAttribute('aria-pressed', on); sound.setAttribute('aria-label', t(on ? 'pause' : 'play')); }
   audio.addEventListener('play', () => show(true));
   audio.addEventListener('pause', () => show(false));
   sound.addEventListener('click', () => { if (audio.paused) play(); else { wanted = false; audio.pause(); } });
@@ -512,7 +576,7 @@ html.intro .gate{
     const name = form.elements.name, guest = name.value.trim();
     if (!guest) { name.style.borderColor = '#A4421E'; name.focus(); return; }
     name.style.borderColor = ''; err.hidden = true;
-    send.disabled = true; send.textContent = 'Sending\u2026';
+    send.disabled = true; send.textContent = t('sending');
     try {
       const timeout = new AbortController();
       const timer = setTimeout(() => timeout.abort(), 20000);
@@ -520,13 +584,11 @@ html.intro .gate{
       clearTimeout(timer);
       if (!(await res.json()).ok) throw new Error('rejected');
     } catch (_) {
-      err.hidden = false; send.disabled = false; send.textContent = 'Send reply';
+      err.hidden = false; send.disabled = false; send.textContent = t('send');
       return;
     }
     const first = guest.split(/\s+/)[0];
-    done.textContent = form.elements.attending.value === 'no'
-      ? `Thank you, ${first}. We\u2019ll miss you.`
-      : `Thank you, ${first}. We can\u2019t wait to celebrate with you.`;
+    done.textContent = t(form.elements.attending.value === 'no' ? 'miss' : 'thanks')(first);
     form.hidden = true; byId('replyH').hidden = true; done.hidden = false;
     setTimeout(() => reply.remove(), 6000);
   });

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var l=new URLSearchParams(location.search).get('lang');try{l=l||localStorage.getItem('lang')}catch(e){}if(l==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl'}})()</script>
 <title>Hana &amp; Aly — 21 November 2026</title>
 <meta name="description" content="Our wedding site. Mohamed Ali Palace, Manial, Cairo.">
 
@@ -10,20 +11,23 @@
      If WhatsApp shows the link without a photo, change og:image to the
      full absolute address, e.g. https://your-domain.com/assets/invitation-share.jpg -->
 <meta property="og:type"        content="website">
+<meta property="og:url" content="https://unauthorized-aly.github.io/wed/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
 <meta property="og:title"       content="Hana &amp; Aly — 21 November 2026">
 <meta property="og:description" content="Under the pergola of Mohamed Ali Palace, Manial, Cairo. Which one feels like us?">
-<meta property="og:image"       content="assets/invitation-share.jpg">
-<meta property="og:image:width"  content="666">
-<meta property="og:image:height" content="1000">
+<meta property="og:image"       content="https://unauthorized-aly.github.io/wed/assets/share-logo.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card"  content="summary_large_image">
 <meta name="twitter:title" content="Hana &amp; Aly — 21 November 2026">
-<meta name="twitter:image" content="assets/invitation-share.jpg">
+<meta name="twitter:image" content="https://unauthorized-aly.github.io/wed/assets/share-logo.jpg">
 <meta name="theme-color" content="#EEE1D1">
 
 <link rel="icon" href="assets/logo-on-rustic.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=Amiri:wght@400;700&family=Tajawal:wght@400;500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 *,*::before,*::after{ box-sizing:border-box; }
@@ -73,32 +77,52 @@ body{
 .desc{ margin:.2rem 0 0; font-size:.98rem; line-height:1.45; max-width:24rem; color:#F2DFCB; }
 .foot{ text-align:center; color:#6E2A12; font-size:.92rem; font-style:italic; }
 @media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
+.lang{ position:absolute; z-index:20; top:.8rem; inset-inline-start:.8rem; height:2.6rem; padding:0 1rem; border:1px solid rgba(140,50,20,.4); border-radius:999px; background:#FBF3E6; color:#8C3214; cursor:pointer; font-family:'Amiri','Cormorant Garamond',Georgia,serif; font-size:1rem; }
+html[lang=ar] .lang{ font-family:'Cormorant Garamond',Georgia,serif; }
+html[lang=ar] body{ font-family:'Amiri',Georgia,serif; }
+html[lang=ar] body *:not(.lang){ font-family:'Amiri',Georgia,serif !important; letter-spacing:0 !important; font-style:normal !important; text-transform:none !important; }
 </style>
 </head>
 <body>
+<button class="lang" id="lang" type="button"></button>
 
 <div class="head">
   <img src="assets/logo-on-cream.svg" width="2360" height="2176" alt="Hana and Aly monogram">
-  <h1>Hana &amp; Aly</h1>
-  <p>Our wedding site, two ways. Same date, same palace &mdash; have a look and tell me which feels like us.</p>
+  <h1 data-i18n="names">Hana &amp; Aly</h1>
+  <p data-i18n="intro">Our wedding site, two ways. Same date, same palace &mdash; have a look and tell me which feels like us.</p>
 </div>
 
 <div class="group">
   <div class="grid">
     <a class="pick pick--light" href="garden-light-short.html">
       <img src="assets/logo-on-cream.svg" width="2360" height="2176" alt="">
-      <h2 class="name">Light garden</h2>
-      <p class="desc">The watercolour pergola, the palace wallpaper and the spinning dance floor.</p>
+      <h2 class="name" data-i18n="light">Light garden</h2>
+      <p class="desc" data-i18n="lightD">The watercolour pergola, the palace wallpaper and the spinning dance floor.</p>
     </a>
     <a class="pick pick--orange" href="garden-orange-short.html">
       <img src="assets/logo-on-rustic.svg" width="2360" height="2176" alt="">
-      <h2 class="name">Orange garden</h2>
-      <p class="desc">The palace arches, the rust damask and the spinning dance floor.</p>
+      <h2 class="name" data-i18n="orange">Orange garden</h2>
+      <p class="desc" data-i18n="orangeD">The palace arches, the rust damask and the spinning dance floor.</p>
     </a>
   </div>
 </div>
 
-<p class="foot">21 November 2026 &middot; Under the pergola, Mohamed Ali Palace, Manial, Cairo</p>
+<p class="foot" data-i18n="foot">21 November 2026 &middot; Under the pergola, Mohamed Ali Palace, Manial, Cairo</p>
 
+<script>
+(() => {
+  const AR = {"names": "هنا وعلي", "intro": "موقع زفافنا بتصميمين. نفس التاريخ ونفس القصر، ألقوا نظرة وأخبروني أيهما يشبهنا.", "light": "الحديقة الفاتحة", "orange": "الحديقة البرتقالية", "lightD": "برجولا بألوان مائية، وزخارف القصر، وحلبة الرقص الدوّارة.", "orangeD": "أقواس القصر، والزخرفة الصدئية، وحلبة الرقص الدوّارة.", "foot": "٢١ نوفمبر ٢٠٢٦ — تحت برجولا قصر الأمير محمد علي، المنيل، القاهرة"}, sw = document.getElementById('lang'), slots = document.querySelectorAll('[data-i18n]');
+  const en = new Map([...slots].map(el => [el, el.innerHTML])), title = document.title;
+  let lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+  function apply() {
+    const root = document.documentElement; root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.title = lang === 'ar' ? 'هنا وعلي — ٢١ نوفمبر ٢٠٢٦' : title;
+    slots.forEach(el => { el.innerHTML = lang === 'ar' ? AR[el.dataset.i18n] : en.get(el); });
+    sw.textContent = lang === 'ar' ? 'English' : 'العربية';
+  }
+  apply();
+  sw.addEventListener('click', () => { lang = lang === 'ar' ? 'en' : 'ar'; try { localStorage.setItem('lang', lang); } catch (_) {} apply(); });
+})();
+</script>
 </body>
 </html>
